@@ -1,0 +1,104 @@
+:root {
+  --accent: #111827;
+}
+
+.header {
+  margin-bottom: 14px;
+}
+
+.header .photo {
+  float: right;
+  width: 24mm;
+  height: 32mm;
+  margin: 0 0 8px 16px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: calc(22pt * var(--fs, 1));
+  font-weight: 300;
+  color: var(--accent);
+}
+
+html[lang^='en'] .header h1 {
+  letter-spacing: 3px;
+}
+
+.headline {
+  margin: 4px 0 0;
+  font-size: calc(10.5pt * var(--fs, 1));
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+html[lang^='en'] .headline {
+  letter-spacing: 2px;
+}
+
+.contacts {
+  margin: 8px 0 0;
+  font-size: calc(9pt * var(--fs, 1));
+  color: #6b7280;
+}
+
+.contacts .sep {
+  color: #d1d5db;
+}
+
+.contacts a {
+  text-decoration: none;
+}
+
+.work-auth {
+  margin: 4px 0 0;
+  font-size: calc(9pt * var(--fs, 1));
+  color: #6b7280;
+}
+
+section {
+  margin-top: 14px;
+}
+
+h2 {
+  margin: 0 0 6px;
+  font-size: calc(9.5pt * var(--fs, 1));
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+html[lang^='en'] h2 {
+  letter-spacing: 2px;
+}
+
+.text {
+  margin: 0;
+  color: #374151;
+}
+
+.entry {
+  margin-bottom: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.period {
+  font-size: calc(9pt * var(--fs, 1));
+  color: #9ca3af;
+  white-space: nowrap;
+}
+
+.sub {
+  font-size: calc(10pt * var(--fs, 1));
+  color: #4b5563;
+}
+
+.skill {
+  margin: 2px 0;
+  color: #374151;
+}

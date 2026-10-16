@@ -1,0 +1,97 @@
+:root {
+  --accent: #1e3a5f;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.header .photo {
+  margin: 0 auto 8px;
+  border: 1px solid #d1d5db;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: calc(24pt * var(--fs, 1));
+  letter-spacing: normal;
+  color: var(--accent);
+}
+
+/* 中文字符本身间距充足，只在英文时加字距 */
+html[lang^='en'] .header h1 {
+  letter-spacing: 2px;
+}
+
+.headline {
+  margin: 4px 0 0;
+  font-size: calc(11pt * var(--fs, 1));
+  color: #4b5563;
+}
+
+.contacts {
+  margin: 6px 0 0;
+  font-size: calc(9.5pt * var(--fs, 1));
+  color: #4b5563;
+}
+
+.contacts .sep {
+  color: #9ca3af;
+}
+
+.contacts a {
+  text-decoration: none;
+}
+
+.work-auth {
+  margin: 4px 0 0;
+  font-size: calc(9.5pt * var(--fs, 1));
+  color: #4b5563;
+}
+
+section {
+  margin-top: 12px;
+}
+
+h2 {
+  margin: 0 0 6px;
+  font-size: calc(12pt * var(--fs, 1));
+  color: var(--accent);
+  border-bottom: 1.5px solid var(--accent);
+  padding-bottom: 2px;
+}
+
+.text {
+  margin: 0;
+}
+
+.entry {
+  margin-bottom: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.period {
+  font-size: calc(9.5pt * var(--fs, 1));
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.sub {
+  font-size: calc(10pt * var(--fs, 1));
+  color: #374151;
+}
+
+.skill {
+  margin: 2px 0;
+}
+
+.skill strong {
+  color: var(--accent);
+}

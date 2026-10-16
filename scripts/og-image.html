@@ -1,0 +1,296 @@
+<!doctype html>
+<!--
+  社交分享图（og:image）源文件，尺寸 1200×630。
+  修改后重新生成 public/og-image.png：
+    1. npm run dev
+    2. 打开 http://localhost:5173/scripts/og-image.html
+    3. 用浏览器开发者工具把视口设为 1200×630，截图（设备像素比 1）保存为 public/og-image.png
+  详见 README「社交分享图」一节。
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Resumake og:image</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background: #0b1220;
+      }
+
+      body {
+        position: relative;
+        font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        color: #ffffff;
+      }
+
+      .stage {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+
+      .bg {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(820px 520px at 86% 6%, rgba(0, 113, 227, 0.42), transparent 62%),
+          radial-gradient(700px 480px at 2% 104%, rgba(13, 148, 136, 0.3), transparent 64%),
+          linear-gradient(135deg, #0a1018 0%, #111a2b 48%, #0a1018 100%);
+      }
+
+      .grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 64px 64px;
+        -webkit-mask-image: radial-gradient(900px 620px at 30% 40%, #000 10%, transparent 78%);
+        mask-image: radial-gradient(900px 620px at 30% 40%, #000 10%, transparent 78%);
+      }
+
+      .left {
+        position: absolute;
+        left: 76px;
+        top: 96px;
+        width: 610px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .brand-name {
+        font-size: 40px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+
+      h1 {
+        margin-top: 46px;
+        font-size: 62px;
+        line-height: 1.12;
+        font-weight: 700;
+        letter-spacing: -1.2px;
+      }
+
+      h1 em {
+        font-style: normal;
+        background: linear-gradient(90deg, #60a5fa, #34d399);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .sub {
+        margin-top: 26px;
+        font-size: 24px;
+        line-height: 1.5;
+        color: #b6c2d4;
+        max-width: 560px;
+      }
+
+      .chips {
+        margin-top: 40px;
+        display: flex;
+        gap: 12px;
+      }
+
+      .chip {
+        padding: 11px 20px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.08);
+        font-size: 18px;
+        color: #e2e8f2;
+      }
+
+      /* ---- 右侧的简历纸张 ---- */
+      .paper {
+        position: absolute;
+        right: -58px;
+        top: 62px;
+        width: 452px;
+        height: 620px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 40px 80px rgba(2, 6, 23, 0.55);
+        transform: rotate(-4deg);
+        padding: 34px 34px 0;
+        color: #1f2937;
+        font-size: 13px;
+        line-height: 1.5;
+        overflow: hidden;
+      }
+
+      .p-name {
+        text-align: center;
+        font-size: 27px;
+        font-weight: 700;
+        color: #1e3a5f;
+        letter-spacing: 1px;
+      }
+
+      .p-role {
+        margin-top: 6px;
+        text-align: center;
+        font-size: 15px;
+        color: #4b5563;
+      }
+
+      .p-contact {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 12px;
+        color: #6b7280;
+      }
+
+      .p-h2 {
+        margin-top: 22px;
+        padding-bottom: 4px;
+        font-size: 15px;
+        font-weight: 700;
+        color: #1e3a5f;
+        border-bottom: 1.6px solid #1e3a5f;
+      }
+
+      .p-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-top: 11px;
+        gap: 12px;
+      }
+
+      .p-row b {
+        font-size: 14px;
+      }
+
+      .p-row span {
+        font-size: 11px;
+        color: #6b7280;
+        white-space: nowrap;
+      }
+
+      .p-sub {
+        margin-top: 2px;
+        font-size: 12px;
+        color: #4b5563;
+      }
+
+      .bar {
+        height: 9px;
+        border-radius: 5px;
+        background: #e5e7eb;
+        margin-top: 8px;
+      }
+
+      .bar.short {
+        width: 62%;
+      }
+
+      .bar.mid {
+        width: 84%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <div class="bg"></div>
+      <div class="grid"></div>
+
+      <div class="left">
+      <div class="brand">
+        <svg xmlns="http://www.w3.org/2000/svg" width="76" height="76" viewBox="0 0 64 64">
+          <defs>
+            <linearGradient id="base" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#3a3a3a" />
+              <stop offset="0.55" stop-color="#161616" />
+              <stop offset="1" stop-color="#000000" />
+            </linearGradient>
+            <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffffff" stop-opacity="0.35" />
+              <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="letter" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffffff" />
+              <stop offset="1" stop-color="#d4d4d8" />
+            </linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="14" fill="url(#base)" />
+          <rect x="1" y="1" width="62" height="31" rx="13" fill="url(#sheen)" />
+          <rect
+            x="0.75"
+            y="0.75"
+            width="62.5"
+            height="62.5"
+            rx="13.25"
+            fill="none"
+            stroke="#ffffff"
+            stroke-opacity="0.12"
+            stroke-width="1.5"
+          />
+          <path
+            d="M22 47V17h11.5a8.5 8.5 0 0 1 0 17H22m12 0 9.5 13"
+            fill="none"
+            stroke="url(#letter)"
+            stroke-width="5.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span class="brand-name">Resumake</span>
+      </div>
+
+      <h1>Free resume builder<br />with <em>PDF export</em></h1>
+
+      <p class="sub">
+        Pick a template, fill in the form, download a polished PDF. Your data never leaves the browser.
+      </p>
+
+      <div class="chips">
+        <span class="chip">3 templates</span>
+        <span class="chip">A4 &amp; Letter</span>
+        <span class="chip">No sign-up</span>
+      </div>
+    </div>
+
+      <div class="paper">
+        <div class="p-name">Alex Morgan</div>
+        <div class="p-role">Frontend Engineer</div>
+        <div class="p-contact">alex@example.com &nbsp;|&nbsp; github.com/alexmorgan &nbsp;|&nbsp; Seattle</div>
+
+        <div class="p-h2">SUMMARY</div>
+        <div class="bar mid"></div>
+        <div class="bar"></div>
+        <div class="bar short"></div>
+
+        <div class="p-h2">EXPERIENCE</div>
+        <div class="p-row"><b>Northwind Labs</b><span>2022.03 - Present</span></div>
+        <div class="p-sub">Senior Frontend Engineer · Seattle</div>
+        <div class="bar mid"></div>
+        <div class="bar"></div>
+        <div class="p-row"><b>Bright Studio</b><span>2019.06 - 2022.02</span></div>
+        <div class="p-sub">Frontend Engineer</div>
+        <div class="bar mid"></div>
+        <div class="bar short"></div>
+
+        <div class="p-h2">SKILLS</div>
+        <div class="bar mid"></div>
+        <div class="bar short"></div>
+      </div>
+    </div>
+  </body>
+</html>

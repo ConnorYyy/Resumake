@@ -1,0 +1,117 @@
+:root {
+  --accent: #0f766e;
+}
+
+.header {
+  background: var(--accent);
+  color: #ffffff;
+  padding: 18px 22px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+
+.header .photo {
+  float: right;
+  width: 24mm;
+  height: 32mm;
+  margin: 0 0 8px 16px;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: calc(26pt * var(--fs, 1));
+  font-weight: 700;
+}
+
+.headline {
+  margin: 2px 0 0;
+  font-size: calc(12pt * var(--fs, 1));
+  opacity: 0.92;
+}
+
+.contacts {
+  margin: 8px 0 0;
+  font-size: calc(9.5pt * var(--fs, 1));
+  opacity: 0.95;
+}
+
+.contacts .sep {
+  opacity: 0.7;
+}
+
+.contacts a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.work-auth {
+  margin: 6px 0 0;
+  font-size: calc(9.5pt * var(--fs, 1));
+  opacity: 0.9;
+}
+
+section {
+  margin-top: 12px;
+}
+
+h2 {
+  margin: 0 0 6px;
+  font-size: calc(11.5pt * var(--fs, 1));
+  color: var(--accent);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+html[lang^='en'] h2 {
+  letter-spacing: 1px;
+}
+
+h2::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #cbd5e1;
+}
+
+.text {
+  margin: 0;
+  color: #374151;
+}
+
+.entry {
+  margin-bottom: 9px;
+  padding-left: 10px;
+  border-left: 3px solid #99f6e4;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.period {
+  font-size: calc(9.5pt * var(--fs, 1));
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.sub {
+  font-size: calc(10pt * var(--fs, 1));
+  color: #334155;
+}
+
+.skill {
+  margin: 2px 0;
+}
+
+.skill strong {
+  display: inline-block;
+  min-width: 56px;
+  color: var(--accent);
+}

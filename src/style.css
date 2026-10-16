@@ -1,0 +1,100 @@
+:root {
+  --apple-text: #1d1d1f;
+  --apple-text-secondary: #6e6e73;
+  --apple-bg: #f5f5f7;
+  --apple-surface: #ffffff;
+  --apple-border: #d2d2d7;
+  --apple-blue: #0071e3;
+  --apple-blue-hover: #0066cc;
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  background: var(--apple-bg);
+  color: var(--apple-text);
+  font-size: 14px;
+  line-height: 1.47;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+button {
+  font: inherit;
+  letter-spacing: inherit;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid rgba(0, 113, 227, 0.35);
+  outline-offset: 0;
+}
+
+::selection {
+  background: rgba(0, 113, 227, 0.2);
+}
+
+.app-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--apple-bg);
+  color: var(--apple-text-secondary);
+  font-size: 14px;
+}
+
+.app-splash img {
+  width: 72px;
+  height: 72px;
+  animation: splash-in 0.6s ease both;
+}
+
+@keyframes splash-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

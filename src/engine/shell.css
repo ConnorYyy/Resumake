@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: var(--font-body, 'Microsoft YaHei', 'PingFang SC', 'Noto Sans CJK SC', 'Source Han Sans SC', 'Segoe UI', Arial, sans-serif);
+  color: #1f2937;
+  /* --fs 由 buildDocument 注入，用于整体缩放正文字号 */
+  font-size: calc(10.5pt * var(--fs, 1));
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.resume-page {
+  width: var(--page-width);
+  min-height: var(--page-height);
+  padding: var(--page-margin);
+  background: #ffffff;
+}
+
+.photo {
+  display: block;
+  width: 26mm;
+  height: 34.67mm;
+  object-fit: cover;
+  border: 0;
+}
+
+.resume-page .header {
+  display: flow-root;
+}
+
+.resume-page .photo.photo-left {
+  display: block;
+  float: left;
+  margin: 0 16px 8px 0;
+}
+
+.resume-page .photo.photo-center {
+  display: block;
+  float: none;
+  margin: 0 auto 8px;
+}
+
+.resume-page .photo.photo-right {
+  display: block;
+  float: right;
+  margin: 0 0 8px 16px;
+}
+
+.block {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+h1,
+h2,
+h3 {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.page-break {
+  break-before: page;
+  page-break-before: always;
+  height: 0;
+}
+
+a {
+  color: inherit;
+}
+
+ul {
+  margin: 2px 0 0;
+  padding-left: 1.2em;
+}
+
+li {
+  margin: 1px 0;
+}
+
+@media print {
+  /* 打印时边距由 @page 提供，元素本身不再留内边距。
+     这样每一页都会带上边距，而不会只在第一页生效。 */
+  .resume-page {
+    width: auto;
+    min-height: 0;
+    padding: 0;
+  }
+}
