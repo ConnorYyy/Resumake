@@ -87,10 +87,10 @@ async function onImportFile(event: Event) {
 
 <template>
   <header class="toolbar">
-    <div class="brand">
+    <a class="brand" href="/" :title="t('toolbar.backHome')">
       <img class="logo" src="/logo.svg" :alt="t('toolbar.logoAlt')" width="28" height="28" />
       <span>Resumake</span>
-    </div>
+    </a>
 
     <div class="settings">
       <label>
@@ -192,6 +192,7 @@ async function onImportFile(event: Event) {
   font-weight: 700;
   font-size: 18px;
   color: #1d1d1f;
+  text-decoration: none;
 }
 
 .logo {

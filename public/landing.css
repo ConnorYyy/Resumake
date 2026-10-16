@@ -195,6 +195,11 @@ section.block.alt {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
+/* 四个为一组的卡片用两列排布，避免出现 3 + 1 的孤行 */
+.grid.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+}
+
 .card {
   background: var(--surface);
   border-radius: 18px;
