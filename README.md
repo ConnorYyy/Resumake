@@ -90,6 +90,8 @@ README.md         项目说明
 
 编辑器与落地页接入了 Sentry 用于发现线上崩溃，但上报内容**严格限定为程序异常本身**：不含简历内容、表单字段或照片；客户端也不发送用户信息（IP）、Cookie、请求头/请求体、URL 查询参数与栈帧局部变量，且不记录面包屑与会话统计（Sentry 服务端仍可能按连接 IP 推断国家/城市级别的地理位置，当前未开启其"不存储 IP"设置）。实现见 `src/services/telemetry.ts`（发送前统一清洗）与 `src/services/telemetryScrub.ts`。把 `VITE_SENTRY_DSN` 留空即可整体关闭上报。
 
+访问量统计使用 **Cloudflare Web Analytics**：无 Cookie、不跨站追踪、不采集个人信息，只提供聚合的页面浏览量。脚本标签直接写在 `index.html`、`zh/index.html`、`app/index.html` 里，删掉那段 `<script>` 即可彻底关闭统计。
+
 ## 文档
 
 以下文档位于 `docs/`，仅保留在本地工作副本中（该目录已加入 `.gitignore`，不随仓库发布）：

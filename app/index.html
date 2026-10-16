@@ -16,5 +16,13 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
+
+    <!-- Cloudflare Web Analytics：无 Cookie、不跨站追踪、不采集个人信息。
+         想彻底关闭访问统计，删除这段 script 即可。 -->
+    <script
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "36068ede1e0d43b0a4387d88b2398299"}'
+    ></script>
   </body>
 </html>

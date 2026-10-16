@@ -113,7 +113,7 @@
             "name": "Do you collect any data?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Only anonymous crash reports: the error type and a stack trace, used to fix bugs. They never include your resume content, photos or personal details, and there is no tracking or analytics."
+              "text": "Two things, and neither identifies you. Anonymous crash reports — the error type and a stack trace — help us fix bugs, and never include your resume content, photos or personal details. We also count page views with Cloudflare Web Analytics, which uses no cookies, does not track you across other sites and collects no personal data."
             }
           }
         ]
@@ -294,9 +294,10 @@
             <details>
               <summary>Do you collect any data?</summary>
               <p>
-                Only anonymous crash reports. If the app breaks, we get the error type and a stack trace so we can fix
-                it. Those reports never include your resume content, photos or personal details, and there is no
-                tracking or analytics.
+                Two things, and neither identifies you. Anonymous crash reports — the error type and a stack trace —
+                help us fix bugs, and never include your resume content, photos or personal details. We also count page
+                views with Cloudflare Web Analytics, which uses no cookies, does not track you across other sites and
+                collects no personal data.
               </p>
             </details>
           </div>
@@ -319,5 +320,13 @@
       </div>
     </footer>
     <script type="module" src="/src/landing.ts"></script>
+
+    <!-- Cloudflare Web Analytics：无 Cookie、不跨站追踪、不采集个人信息。
+         想彻底关闭访问统计，删除这段 script 即可。 -->
+    <script
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "36068ede1e0d43b0a4387d88b2398299"}'
+    ></script>
   </body>
 </html>
