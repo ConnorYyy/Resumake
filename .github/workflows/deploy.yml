@@ -32,7 +32,11 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # 未配置该 secret 时，构建会自动跳过 Sentry source map 上传
+          # 前端可见的配置（DSN / 赞助链接本身就会出现在产物里，用 variable 即可）
+          # 在仓库 Settings → Secrets and variables → Actions → Variables 里配置
+          VITE_SENTRY_DSN: ${{ vars.VITE_SENTRY_DSN }}
+          VITE_BMC_URL: ${{ vars.VITE_BMC_URL }}
+          # 只在构建期用于上传 source map，不进入前端产物
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
       - name: Deploy
