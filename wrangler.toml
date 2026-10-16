@@ -3,7 +3,9 @@
 # 因此不需要 main 入口脚本；页面头部规则由 dist/_headers 提供（Workers 会解析该文件）。
 name = "resumake"
 compatibility_date = "2026-10-16"
-workers_dev = true
+# 关闭 workers.dev 子域，只通过自定义域 resumake.online 提供服务，
+# 避免 *.workers.dev 被搜索引擎当成第二个站点。
+workers_dev = false
 
 [assets]
 directory = "./dist"
