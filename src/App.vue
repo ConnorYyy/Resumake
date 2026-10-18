@@ -10,6 +10,7 @@ import { useResumeStore, type EditorMode } from './stores/resume';
 import { useI18n } from './i18n';
 import { SUPPORT_ENABLED, SUPPORT_URL } from './config/support';
 import { readLastPromptAt, shouldPromptSupport, writeLastPromptAt } from './services/support';
+import { trackUsage } from './services/usage';
 
 const store = useResumeStore();
 const { t } = useI18n();
@@ -46,6 +47,8 @@ function openPrint() {
 
 function confirmPrint() {
   showPrintDialog.value = false;
+  // 匿名计数：用户确认导出（只发送事件名，不含任何简历内容）
+  trackUsage('export');
   preview.value?.print();
 }
 
@@ -78,6 +81,8 @@ function onKeydown(event: KeyboardEvent) {
 onMounted(() => {
   store.init();
   window.addEventListener('keydown', onKeydown);
+  // 匿名计数：编辑器真正挂载（只发送事件名）
+  trackUsage('editor_open');
 });
 
 onBeforeUnmount(() => {

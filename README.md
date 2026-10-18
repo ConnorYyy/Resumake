@@ -92,6 +92,8 @@ README.md         项目说明
 
 访问量统计使用 **Cloudflare Web Analytics**：无 Cookie、不跨站追踪、不采集个人信息，只提供聚合的页面浏览量。脚本标签直接写在 `index.html`、`zh/index.html`、`app/index.html` 里，删掉那段 `<script>` 即可彻底关闭统计。
 
+功能使用计数（"编辑器被打开" / "PDF 被导出"）由 `worker/index.ts` 写入 **Cloudflare Analytics Engine**（`resumake_events` 数据集）——只写入事件名，**不含简历内容、Cookie 或任何身份标识**，数据留在自己的 Cloudflare 账号内，不经过第三方。前端发送逻辑见 `src/services/usage.ts`，本地开发（非 PROD）不发送。想关闭：删掉 `worker/index.ts` 里的 `/api/event` 分支、`wrangler.toml` 里的 `analytics_engine_datasets`，并移除 `trackUsage()` 调用即可。
+
 ## 文档
 
 以下文档位于 `docs/`，仅保留在本地工作副本中（该目录已加入 `.gitignore`，不随仓库发布）：

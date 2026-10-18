@@ -1,11 +1,20 @@
 # Cloudflare Workers 配置
-# 这是一个纯静态站点：构建产物 dist/ 直接作为 Worker 的静态资源发布，
-# 因此不需要 main 入口脚本；页面头部规则由 dist/_headers 提供（Workers 会解析该文件）。
+# 这是一个静态站点：构建产物 dist/ 作为 Worker 的静态资源发布。
+# main 入口只额外处理一件事——接收匿名的功能使用计数（见 worker/index.ts）。
+# 页面头部规则由 dist/_headers 提供（Workers 会解析该文件）。
 name = "resumake"
 compatibility_date = "2026-10-16"
+main = "worker/index.ts"
 # 关闭 workers.dev 子域，只通过自定义域 resumake.online 提供服务，
 # 避免 *.workers.dev 被搜索引擎当成第二个站点。
 workers_dev = false
 
 [assets]
 directory = "./dist"
+# 声明绑定后，Worker 可以把未命中的请求回落到静态资源处理
+binding = "ASSETS"
+
+# 匿名功能计数（编辑器打开 / 导出 PDF）。数据留在本账号内，不经过第三方。
+[[analytics_engine_datasets]]
+binding = "EVENTS"
+dataset = "resumake_events"
