@@ -58,14 +58,46 @@
   <body>
     <!--
       这段静态内容会被 Vue 挂载时替换掉。
-      它的作用是：在 JS 加载期间给用户一个交代，并让不执行 JS 的爬虫
+      它的作用：JS 加载期间给用户一个交代，并让不执行 JS 的爬虫
       （包括大多数 AI 抓取器）也能读到这个页面到底是什么。
+      下面的样式只作用于挂载前的占位内容；挂载后 #app 被整体替换，不会影响编辑器。
     -->
+    <style>
+      #app > h1,
+      #app > h2,
+      #app > p {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+        text-align: center;
+      }
+      #app > h1 {
+        margin: 34vh 24px 12px;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.4;
+        color: #1d1d1f;
+      }
+      #app > h2 {
+        margin: 22px 24px 6px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #1d1d1f;
+      }
+      #app > p {
+        margin: 0 auto 6px;
+        max-width: 620px;
+        padding: 0 24px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #6e6e73;
+      }
+    </style>
     <div id="app">
       <h1>Free resume editor — no sign-up, no paywall</h1>
+      <p>Three templates, live A4 and Letter preview, ATS-friendly PDF export. Your data stays in this browser.</p>
+      <h2>What you can do here</h2>
       <p>
-        Loading the editor… Build a resume, preview it on A4 or Letter, and export an ATS-friendly PDF with selectable
-        text. Your data stays in this browser.
+        Choose a template, fill in your details, adjust margins and font scale, then export a PDF with selectable text.
+        If the editor does not appear, enable JavaScript in your browser.
       </p>
     </div>
     <script type="module" src="/src/main.ts"></script>
