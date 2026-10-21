@@ -6,7 +6,7 @@ import { defaultDateFormat, isDateFormatFor } from '../engine/date';
 import { createItem, createEmptyDoc } from '../data/factory';
 import { snapFontScale } from '../data/schema';
 import { createSample } from '../data/sample';
-import { detectLocale } from '../i18n/locale';
+import { resolveInitialLocale } from '../i18n/locale';
 import { reportIssue } from '../services/telemetry';
 import { dbGet, dbSet } from '../storage/db';
 import type {
@@ -49,8 +49,8 @@ function presentationMeta(meta: ResumeMeta): Partial<ResumeMeta> {
 }
 
 export const useResumeStore = defineStore('resume', () => {
-  /** 本地没有保存内容时，按浏览器语言给出示例内容（中文浏览器用中文，其余用英文） */
-  const initialLocale = detectLocale();
+  /** 本地没有保存内容时，按落地页语言（其次浏览器语言）给出示例内容 */
+  const initialLocale = resolveInitialLocale();
   const doc = ref<ResumeDoc>(createSample(initialLocale));
   const mode = ref<EditorMode>('form');
   const saveStatus = ref<SaveStatus>('idle');
