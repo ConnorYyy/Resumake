@@ -8,28 +8,40 @@ import pkg from './package.json' with { type: 'json' };
 const SITE_URL = siteConfig.siteUrl.replace(/\/+$/, '');
 const RELEASE = `resumake@${pkg.version}`;
 
+/**
+ * 站点地图清单。
+ *
+ * localized = true 的页面参与中英 hreflang 互指（首页与中文首页）。
+ * 内容页各自独立，互不翻译，因此不加 alternate。
+ */
+const SITEMAP_PAGES = [
+  { loc: '/', priority: '1.0', localized: true },
+  { loc: '/zh/', priority: '0.9', localized: true },
+  { loc: '/app/', priority: '0.7', localized: false },
+  { loc: '/private-resume-builder/', priority: '0.8', localized: false },
+  { loc: '/resume-builder-no-sign-up/', priority: '0.8', localized: false },
+  { loc: '/free-resume-builder-no-watermark/', priority: '0.8', localized: false },
+  { loc: '/ats-friendly-resume-builder/', priority: '0.8', localized: false },
+  { loc: '/templates/', priority: '0.7', localized: false },
+  { loc: '/resume-builder-without-email/', priority: '0.7', localized: false },
+  { loc: '/zh/jianli-shengchengqi/', priority: '0.7', localized: false },
+];
+
 function buildSitemap(): string {
   const today = new Date().toISOString().slice(0, 10);
-  const pages = [
-    { loc: `${SITE_URL}/`, priority: '1.0', localized: true },
-    { loc: `${SITE_URL}/zh/`, priority: '0.9', localized: true },
-    { loc: `${SITE_URL}/app/`, priority: '0.8', localized: false },
-  ];
-  const entries = pages
-    .map((page) => {
-      const alternates = page.localized
-        ? `
+  const entries = SITEMAP_PAGES.map((page) => {
+    const alternates = page.localized
+      ? `
     <xhtml:link rel="alternate" hreflang="en" href="${SITE_URL}/" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="${SITE_URL}/zh/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}/" />`
-        : '';
-      return `  <url>
-    <loc>${page.loc}</loc>
+      : '';
+    return `  <url>
+    <loc>${SITE_URL}${page.loc}</loc>
     <lastmod>${today}</lastmod>
     <priority>${page.priority}</priority>${alternates}
   </url>`;
-    })
-    .join('\n');
+  }).join('\n');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -38,12 +50,14 @@ ${entries}
 `;
 }
 
-/** 替换 HTML 中的 %SITE_URL%，并生成 sitemap.xml 与 robots.txt */
+/** 替换 HTML 中的 %SITE_URL% / %BUILD_DATE%，并生成 sitemap.xml 与 robots.txt */
 function seoPlugin(): Plugin {
   return {
     name: 'resumake-seo',
     transformIndexHtml(html) {
-      return html.replace(/%SITE_URL%/g, SITE_URL);
+      return html
+        .replace(/%SITE_URL%/g, SITE_URL)
+        .replace(/%BUILD_DATE%/g, new Date().toISOString().slice(0, 10));
     },
     generateBundle() {
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: buildSitemap() });
@@ -103,6 +117,13 @@ export default defineConfig(({ mode }) => {
           main: 'index.html',
           zh: 'zh/index.html',
           app: 'app/index.html',
+          privateResumeBuilder: 'private-resume-builder/index.html',
+          noSignUp: 'resume-builder-no-sign-up/index.html',
+          noWatermark: 'free-resume-builder-no-watermark/index.html',
+          atsFriendly: 'ats-friendly-resume-builder/index.html',
+          templates: 'templates/index.html',
+          withoutEmail: 'resume-builder-without-email/index.html',
+          zhGenerator: 'zh/jianli-shengchengqi/index.html',
         },
       },
     },

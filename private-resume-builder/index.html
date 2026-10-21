@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Private Resume Builder — Your Data Stays Local | Resumake</title>
+    <meta
+      name="description"
+      content="A resume builder that never uploads your CV. No account, no database, no server copy — your resume stays in your browser and the PDF is made locally."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="R4qJpITjCfoNZSlde8Nvbo_bxU8YLDkUfrFbyDbGq9Y" />
+    <link rel="canonical" href="%SITE_URL%/private-resume-builder/" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="stylesheet" href="/landing.css" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Resumake" />
+    <meta property="og:title" content="Private Resume Builder — Your Data Never Leaves the Browser" />
+    <meta property="og:description" content="No account, no database, no server copy. Your resume stays in your browser and the PDF is made locally." />
+    <meta property="og:url" content="%SITE_URL%/private-resume-builder/" />
+    <meta property="og:image" content="%SITE_URL%/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="%SITE_URL%/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "%SITE_URL%/" },
+          { "@type": "ListItem", "position": 2, "name": "Private resume builder", "item": "%SITE_URL%/private-resume-builder/" }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is my resume uploaded to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Resume content, photos and settings stay in your browser's local storage. Nothing is sent to a server, and there is no resume database."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What exactly is stored, and where?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Two things are stored in your browser profile for resumake.online: your resume content in IndexedDB, and your settings such as template, language and layout. Neither is synced to a server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the PDF leave my device?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The PDF is produced by your browser's own print engine from the page you see, and saved to your downloads folder. It is never uploaded."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if I clear my browser data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The draft disappears, because the draft only exists in this browser. Download a backup JSON file first; you can restore it in any browser later."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I open the same resume on another device?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, through the backup file. There is no cloud sync because there is no account and no server-side storage."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you still collect any analytics?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, two anonymous counters: page views via Cloudflare Web Analytics, and whether the editor was opened or a PDF exported. They contain no cookies, no identifiers and nothing about your resume."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/">
+          <img src="/logo.svg" alt="Resumake logo" width="24" height="24" />
+          <span>Resumake</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a class="hide-sm" href="/#features">Features</a>
+          <a class="hide-sm" href="/templates/">Templates</a>
+          <a class="hide-sm" href="#faq">FAQ</a>
+          <a class="hide-sm" href="/zh/">中文</a>
+          <a class="btn small" href="/app/">Open editor</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1>A private resume builder that never uploads your CV.</h1>
+          <p class="lead">
+            Resumake runs entirely in your browser. Your resume, photo and settings are stored locally, there is no
+            account, and there is no server-side resume database to breach.
+          </p>
+          <div class="actions">
+            <a class="btn" href="/app/">Build a private resume</a>
+            <a class="btn ghost" href="#where">Where does my data live?</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="where">
+        <div class="container">
+          <div class="section-head">
+            <h2>Where does your resume data live?</h2>
+            <p>Short answers first, then the details.</p>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <h3>Is my resume uploaded to a server?</h3>
+              <p>
+                No. Resume content, photos and settings stay in your browser's local storage. Nothing is sent to a
+                server, and there is no resume database.
+              </p>
+            </article>
+            <article class="answer">
+              <h3>What exactly is stored, and where?</h3>
+              <p>
+                Two things live in your browser profile for resumake.online: your resume content in IndexedDB, and your
+                settings such as template, language and layout. Neither is synced anywhere.
+              </p>
+              <p>
+                If you open your browser's developer tools and clear site data, both are removed at once.
+              </p>
+            </article>
+            <article class="answer">
+              <h3>Does the PDF leave my device?</h3>
+              <p>
+                No. The PDF is produced by your browser's own print engine from the page you see, and saved straight to
+                your downloads folder. It is never uploaded for processing.
+              </p>
+            </article>
+            <article class="answer">
+              <h3>What happens if I clear my browser data?</h3>
+              <p>
+                The draft disappears, because the draft only exists in this browser. Download a backup JSON file first;
+                you can restore it in any browser later.
+              </p>
+            </article>
+            <article class="answer">
+              <h3>Can I open the same resume on another device?</h3>
+              <p>
+                Yes, through the backup file. There is no cloud sync because there is no account and no server-side
+                storage.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block alt" id="why">
+        <div class="container">
+          <div class="section-head">
+            <h2>Why does "local only" matter for a resume?</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <h3>A resume is one of the most personal documents you own.</h3>
+              <p>
+                It contains your full name, phone number, email, home city, employment history, education and often a
+                photo. Uploading it to a third-party service creates a copy you no longer control.
+              </p>
+              <p>
+                Breaches happen, databases get misconfigured, and "we may share data with partners" clauses are common.
+                The simplest way to reduce that risk is to never send the file anywhere in the first place.
+              </p>
+            </article>
+            <article class="answer">
+              <h3>No account also means no password to leak.</h3>
+              <p>
+                There is no sign-up, so there is no password reuse risk, no verification email to intercept and no
+                account profile to scrape.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="compare">
+        <div class="container">
+          <div class="section-head">
+            <h2>How is this different from a cloud resume builder?</h2>
+          </div>
+          <div class="compare-wrap">
+            <table class="compare">
+              <thead>
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>Resumake</th>
+                  <th>Typical cloud builder</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Where your resume is stored</td>
+                  <td>Your browser only</td>
+                  <td>Their servers</td>
+                </tr>
+                <tr>
+                  <td>Account required</td>
+                  <td>No</td>
+                  <td>Usually yes</td>
+                </tr>
+                <tr>
+                  <td>Data breach surface</td>
+                  <td>None on our side — we hold no resume data</td>
+                  <td>Whatever they store</td>
+                </tr>
+                <tr>
+                  <td>Cross-device sync</td>
+                  <td>Manual, via a backup file</td>
+                  <td>Automatic</td>
+                </tr>
+                <tr>
+                  <td>Access from a new device</td>
+                  <td>Restore the backup file</td>
+                  <td>Log in</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="block alt" id="how-it-works">
+        <div class="container">
+          <div class="section-head">
+            <h2>How to keep a backup of your resume.</h2>
+          </div>
+          <ol class="steps">
+            <li>
+              <h3>Save the backup file</h3>
+              <p>In the editor, choose Save backup. You get a small JSON file containing your resume and settings.</p>
+            </li>
+            <li>
+              <h3>Store it somewhere you trust</h3>
+              <p>Your own drive, an encrypted folder — anywhere private. It is plain JSON, so keep it out of public repos.</p>
+            </li>
+            <li>
+              <h3>Restore whenever you need</h3>
+              <p>Open the editor in any browser and import the file. The resume reappears exactly as you left it.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="block" id="faq">
+        <div class="container">
+          <div class="section-head">
+            <h2>Frequently asked questions</h2>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>Is my resume uploaded to a server?</summary>
+              <p>
+                No. Resume content, photos and settings stay in your browser's local storage. Nothing is sent to a
+                server, and there is no resume database.
+              </p>
+            </details>
+            <details>
+              <summary>What exactly is stored, and where?</summary>
+              <p>
+                Two things are stored in your browser profile for resumake.online: your resume content in IndexedDB, and
+                your settings such as template, language and layout. Neither is synced to a server.
+              </p>
+            </details>
+            <details>
+              <summary>Does the PDF leave my device?</summary>
+              <p>
+                No. The PDF is produced by your browser's own print engine from the page you see, and saved to your
+                downloads folder. It is never uploaded.
+              </p>
+            </details>
+            <details>
+              <summary>What happens if I clear my browser data?</summary>
+              <p>
+                The draft disappears, because the draft only exists in this browser. Download a backup JSON file first;
+                you can restore it in any browser later.
+              </p>
+            </details>
+            <details>
+              <summary>Can I open the same resume on another device?</summary>
+              <p>
+                Yes, through the backup file. There is no cloud sync because there is no account and no server-side
+                storage.
+              </p>
+            </details>
+            <details>
+              <summary>Do you still collect any analytics?</summary>
+              <p>
+                Yes, two anonymous counters: page views via Cloudflare Web Analytics, and whether the editor was opened
+                or a PDF exported. They contain no cookies, no identifiers and nothing about your resume.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="container">
+          <h2>Build a resume that never leaves your browser.</h2>
+          <p>Free, no account, no upload.</p>
+          <a class="btn" href="/app/">Open the editor</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>© Resumake. Independent project, not affiliated with resumake.io.</span>
+        <span>
+          <a href="/resume-builder-no-sign-up/">No sign-up</a> ·
+          <a href="/free-resume-builder-no-watermark/">No watermark</a> ·
+          <a href="/ats-friendly-resume-builder/">ATS</a> ·
+          <a href="/templates/">Templates</a> ·
+          <a href="/resume-builder-without-email/">No email</a>
+        </span>
+        <span><a href="/app/">Editor</a> · <a href="/zh/">中文版</a></span>
+      </div>
+    </footer>
+    <script type="module" src="/src/landing.ts"></script>
+    <script
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "36068ede1e0d43b0a4387d88b2398299"}'
+    ></script>
+  </body>
+</html>

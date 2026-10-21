@@ -6,7 +6,7 @@
     <title>Free Resume Builder — No Sign-Up, Export PDF | Resumake</title>
     <meta
       name="description"
-      content="Free online resume builder and CV maker with no sign-up and no paywall. Pick a template, fill in the form and export an ATS-friendly PDF with selectable text — your data stays in your browser."
+      content="Free resume builder with no sign-up and no paywall. Build a resume, preview it on A4 or Letter, and export an ATS-friendly PDF in your browser."
     />
     <meta name="robots" content="index,follow" />
     <meta name="google-site-verification" content="R4qJpITjCfoNZSlde8Nvbo_bxU8YLDkUfrFbyDbGq9Y" />
@@ -22,7 +22,7 @@
     <meta property="og:title" content="Free Resume Builder — No Sign-Up, Export PDF" />
     <meta
       property="og:description"
-      content="Free online resume builder and CV maker with no sign-up. Pick a template, fill in the form and export an ATS-friendly PDF with selectable text."
+      content="Free resume builder with no sign-up. Build a resume, preview it on A4 or Letter, and export an ATS-friendly PDF in your browser."
     />
     <meta property="og:url" content="%SITE_URL%/" />
     <meta property="og:locale" content="en_US" />
@@ -38,14 +38,33 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "%SITE_URL%/#organization",
+        "name": "Resumake",
+        "alternateName": "Resumake.online",
+        "url": "%SITE_URL%/",
+        "logo": "%SITE_URL%/logo.svg",
+        "description": "An independent, free, browser-only resume builder. Not affiliated with resumake.io or any other similarly named service.",
+        "disambiguatingDescription": "Resumake.online is an independent free resume builder. It is not affiliated with, endorsed by, or connected to resumake.io.",
+        "sameAs": ["https://buymeacoffee.com/connory"]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Resumake",
         "url": "%SITE_URL%/",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Any (modern web browser)",
         "inLanguage": ["en", "zh-CN"],
-        "description": "Free online resume builder and CV maker with no sign-up, ready-made templates and ATS-friendly PDF export with selectable text.",
+        "description": "Free online resume builder and CV maker with no sign-up, three built-in templates and ATS-friendly PDF export with selectable text.",
         "isAccessibleForFree": true,
+        "softwareVersion": "1.0.0",
+        "dateModified": "%BUILD_DATE%",
+        "screenshot": "%SITE_URL%/og-image.png",
+        "author": { "@id": "%SITE_URL%/#organization" },
+        "publisher": { "@id": "%SITE_URL%/#organization" },
         "featureList": [
           "Resume and CV builder with no sign-up",
           "Three built-in resume templates",
@@ -64,12 +83,7 @@
         "name": "Resumake",
         "url": "%SITE_URL%/",
         "inLanguage": ["en", "zh-CN"],
-        "publisher": {
-          "@type": "Organization",
-          "name": "Resumake",
-          "url": "%SITE_URL%/",
-          "logo": "%SITE_URL%/logo.svg"
-        }
+        "publisher": { "@id": "%SITE_URL%/#organization" }
       }
     </script>
     <script type="application/ld+json">
@@ -82,7 +96,7 @@
             "name": "Is Resumake free to use?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Creating and exporting resumes is free. Supporting the project with Buy Me a Coffee is optional and unlocks nothing."
+              "text": "Yes. Every template and unlimited PDF exports cost $0. There is no trial that expires and no paywall at download. Supporting the project with Buy Me a Coffee is optional and unlocks nothing."
             }
           },
           {
@@ -90,7 +104,7 @@
             "name": "Do I need to create an account?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Open the editor and start right away. Your resume is saved in your browser."
+              "text": "No. There is no account, no email and no password. Open the editor and start typing; your draft is saved automatically in your browser."
             }
           },
           {
@@ -98,7 +112,7 @@
             "name": "Is my resume data uploaded to a server?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Resume content, photos and settings stay in your browser. You can save a backup file at any time."
+              "text": "No. Resume content, photos and settings stay in your browser storage. There is no resume database on the server, so there is nothing to leak or sell."
             }
           },
           {
@@ -106,7 +120,7 @@
             "name": "Can I export my resume as a PDF with selectable text?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. PDF export uses your browser's print function, so the text stays selectable and links remain clickable."
+              "text": "Yes. Export opens your browser's print dialog, so the PDF is made of real text rather than an image. Text stays selectable, links stay clickable and applicant tracking systems can parse it."
             }
           },
           {
@@ -115,6 +129,54 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Two things, and neither identifies you. (1) Anonymous crash reports — the error type and a stack trace — used to fix bugs; they never include your resume content, photos or personal details. (2) Anonymous counters: page views via Cloudflare Web Analytics, plus how often the editor is opened or a PDF is exported. No cookies, no identifiers, and nothing about your resume leaves your browser."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Resumake add a watermark to the PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The exported PDF contains only your resume. There is no watermark, no logo and no footer added by Resumake, and no download counter."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need an email address to use it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Resumake never asks for an email address, does not send verification links and has no password to reset. Nothing is sent to your inbox."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I switch templates after I start?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Switch between Classic, Modern and Minimal at any time. Your content stays the same and the layout is re-rendered instantly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work on a phone or tablet?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It works in modern desktop and tablet browsers. On a phone the editor opens, but the split form-and-preview layout is cramped; a desktop or tablet is the better experience."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I export to Word or DOCX?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Resumake exports PDF only, because PDF preserves the exact layout recruiters and applicant tracking systems expect."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if I clear my browser data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your draft is stored in this browser, so clearing site data removes it. Use Save backup in the editor to download a JSON file you can restore later or on another device."
             }
           }
         ]
@@ -125,7 +187,7 @@
     <header class="site-header">
       <div class="container">
         <a class="brand" href="/">
-          <img src="/logo.svg" alt="" width="24" height="24" />
+          <img src="/logo.svg" alt="Resumake logo" width="24" height="24" />
           <span>Resumake</span>
         </a>
         <nav class="nav" aria-label="Main">
@@ -154,69 +216,90 @@
         </div>
       </section>
 
-      <section class="block" id="why">
+      <section class="block" id="what-is">
         <div class="container">
           <div class="section-head">
-            <h2>Why people choose Resumake over other resume builders.</h2>
+            <h2>What is Resumake?</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <h3>Resumake is a free, browser-based resume builder.</h3>
+              <p>
+                You choose one of three templates, fill in your details, and export an ATS-friendly PDF. There is no
+                account, no installation and no server-side copy of your CV.
+              </p>
+              <p>
+                It runs entirely in your browser and is available in English and Simplified Chinese. It is an
+                independent project and is not affiliated with resumake.io.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block alt" id="why">
+        <div class="container">
+          <div class="section-head">
+            <h2>Why choose Resumake over other resume builders?</h2>
             <p>Most free resume builders ask you to register first, then charge you to download. Resumake does neither.</p>
           </div>
-          <div class="grid grid-2">
-            <article class="card">
-              <h3>No account and no email</h3>
-              <p>Open the editor and start typing. There is no sign-up wall, no trial period, and nothing to log back into.</p>
+          <div class="answers">
+            <article class="answer">
+              <h3>Do I need to create an account?</h3>
+              <p>No. There is no sign-up wall, no email and no trial period — open the editor and start typing.</p>
             </article>
-            <article class="card">
-              <h3>Free PDF, no watermark</h3>
-              <p>Export as many resumes as you like. The download is never locked behind a plan and the PDF carries no watermark.</p>
+            <article class="answer">
+              <h3>Is the PDF really free, with no watermark?</h3>
+              <p>Yes. $0, unlimited exports, and no watermark or logo added to your resume.</p>
             </article>
-            <article class="card">
-              <h3>Selectable text, ATS-friendly</h3>
-              <p>The PDF is made of real text rather than an image of text, so applicant tracking systems can parse it and recruiters can copy it.</p>
+            <article class="answer">
+              <h3>Will my PDF pass ATS parsing?</h3>
+              <p>Yes. The PDF is made of real text rather than an image, so applicant tracking systems can read it.</p>
             </article>
-            <article class="card">
-              <h3>Nothing is uploaded</h3>
-              <p>Everything runs in your browser. There is no resume database to leak, and no copy of your CV ever reaches a server.</p>
+            <article class="answer">
+              <h3>Is my resume uploaded to a server?</h3>
+              <p>No. Everything runs in your browser, so there is no resume database to leak.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="block alt" id="features">
+      <section class="block" id="features">
         <div class="container">
           <div class="section-head">
-            <h2>Everything a job-ready resume needs.</h2>
+            <h2>What's included in the editor?</h2>
             <p>Simple controls for content, and full control over the layout when you need it.</p>
           </div>
-          <div class="grid">
-            <article class="card">
-              <h3>Form or code editing</h3>
-              <p>Fill in each section step by step, or fine-tune the layout and colors in Advanced.</p>
+          <div class="answers">
+            <article class="answer">
+              <h3>Can I edit with a form, or with code?</h3>
+              <p>Both. Fill in each section step by step, or switch to Advanced and edit the HTML directly.</p>
             </article>
-            <article class="card">
-              <h3>Live preview</h3>
-              <p>See every change instantly on an A4 or Letter page, with page breaks marked as you type.</p>
+            <article class="answer">
+              <h3>Is there a live preview?</h3>
+              <p>Yes. Every change appears instantly on an A4 or Letter page, with page breaks marked as you type.</p>
             </article>
-            <article class="card">
-              <h3>PDF with selectable text</h3>
-              <p>Export a text-based PDF with clickable links. Print-ready margins from narrow to wide.</p>
+            <article class="answer">
+              <h3>Can I export selectable text?</h3>
+              <p>Yes. The PDF contains real text and clickable links, with print margins from narrow to wide.</p>
             </article>
-            <article class="card">
-              <h3>Photo and theme color</h3>
-              <p>Add a photo cropped to a 3:4 ID-photo ratio, align it left, center or right, and pick your accent color.</p>
+            <article class="answer">
+              <h3>Can I add a photo?</h3>
+              <p>Yes. Upload a photo cropped to a 3:4 ID-photo ratio, align it left, center or right, and choose an accent color.</p>
             </article>
-            <article class="card">
-              <h3>Private by design</h3>
-              <p>No account, no upload. Auto-save keeps your draft in the browser, and saving a backup file keeps a copy you can restore anytime.</p>
+            <article class="answer">
+              <h3>Is my data private?</h3>
+              <p>Yes by design. Auto-save keeps your draft in this browser, and a backup file lets you restore it anywhere.</p>
             </article>
-            <article class="card">
-              <h3>English and Chinese</h3>
-              <p>The interface and resume labels switch between English and Simplified Chinese.</p>
+            <article class="answer">
+              <h3>Does it support Chinese?</h3>
+              <p>Yes. The interface and resume labels switch between English and Simplified Chinese.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="block" id="how-it-works">
+      <section class="block alt" id="how-it-works">
         <div class="container">
           <div class="section-head">
             <h2>From blank page to PDF in three steps.</h2>
@@ -238,11 +321,11 @@
         </div>
       </section>
 
-      <section class="block alt" id="templates">
+      <section class="block" id="templates">
         <div class="container">
           <div class="section-head">
-            <h2>Three templates, one clean style.</h2>
-            <p>Each template supports English and Chinese content and can be recolored to match your field.</p>
+            <h2>Which resume templates are included?</h2>
+            <p>Three templates, one clean style. Each supports English and Chinese content and can be recolored.</p>
           </div>
           <div class="grid">
             <article class="card">
@@ -258,6 +341,110 @@
               <p>Generous whitespace and a clear hierarchy that keeps the focus on your experience.</p>
             </article>
           </div>
+          <p class="note" style="text-align: center; margin-top: 24px">
+            <a href="/templates/">Compare the three templates →</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="block alt" id="cost">
+        <div class="container">
+          <div class="section-head">
+            <h2>How much does it cost?</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <h3>Resumake costs $0.</h3>
+              <p>
+                Every template, unlimited resumes and unlimited PDF exports are free. There is no trial that expires,
+                no paywall at download and no watermark.
+              </p>
+              <p>
+                An optional Buy Me a Coffee link lets you support the project. It unlocks nothing — the free product is
+                the whole product.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="compare">
+        <div class="container">
+          <div class="section-head">
+            <h2>How is Resumake different from other resume builders?</h2>
+            <p>Compared with cloud builders and with other no-account tools.</p>
+          </div>
+          <div class="compare-wrap">
+            <table class="compare">
+              <thead>
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>Resumake</th>
+                  <th>Typical cloud builder</th>
+                  <th>Other no-account tools</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Account required</td>
+                  <td>No</td>
+                  <td>Usually yes</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <td>Free PDF export</td>
+                  <td>Yes, unlimited</td>
+                  <td>Often paid or limited</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>Watermark</td>
+                  <td>No</td>
+                  <td>Sometimes</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <td>Where your data lives</td>
+                  <td>Your browser only</td>
+                  <td>Their servers</td>
+                  <td>Your browser</td>
+                </tr>
+                <tr>
+                  <td>AI writing assistant</td>
+                  <td>No</td>
+                  <td>Yes, often paid</td>
+                  <td>Rarely</td>
+                </tr>
+                <tr>
+                  <td>Best for</td>
+                  <td>Fast, private, single-page resumes</td>
+                  <td>Heavy AI assistance</td>
+                  <td>Open-source workflows</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="block alt" id="who">
+        <div class="container">
+          <div class="section-head">
+            <h2>Who is it for?</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <h3>People who want a clean resume without an account.</h3>
+              <p>
+                It suits students and first-time job seekers, career changers, bilingual applicants writing in English
+                or Chinese, and anyone who would rather not upload a CV to a third-party database.
+              </p>
+              <p>
+                It is also useful when you are applying from a shared or public computer: you can build, export and
+                leave without signing in to anything.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -270,26 +457,29 @@
             <details>
               <summary>Is Resumake free to use?</summary>
               <p>
-                Yes. Creating and exporting resumes is free. Supporting the project with Buy Me a Coffee is optional and
-                unlocks nothing.
+                Yes. Every template and unlimited PDF exports cost $0. There is no trial that expires and no paywall at
+                download. Supporting the project with Buy Me a Coffee is optional and unlocks nothing.
               </p>
             </details>
             <details>
               <summary>Do I need to create an account?</summary>
-              <p>No. Open the editor and start right away. Your resume is saved in your browser.</p>
+              <p>
+                No. There is no account, no email and no password. Open the editor and start typing; your draft is
+                saved automatically in your browser.
+              </p>
             </details>
             <details>
               <summary>Is my resume data uploaded to a server?</summary>
               <p>
-                No. Resume content, photos and settings stay in your browser. You can save a backup file at any time
-                and restore it on another device.
+                No. Resume content, photos and settings stay in your browser storage. There is no resume database on
+                the server, so there is nothing to leak or sell.
               </p>
             </details>
             <details>
               <summary>Can I export my resume as a PDF with selectable text?</summary>
               <p>
-                Yes. PDF export uses your browser's print function, so the text stays selectable and links remain
-                clickable.
+                Yes. Export opens your browser's print dialog, so the PDF is made of real text rather than an image.
+                Text stays selectable, links stay clickable and applicant tracking systems can parse it.
               </p>
             </details>
             <details>
@@ -301,6 +491,83 @@
                 exported. No cookies, no identifiers, and nothing about your resume leaves your browser.
               </p>
             </details>
+            <details>
+              <summary>Does Resumake add a watermark to the PDF?</summary>
+              <p>
+                No. The exported PDF contains only your resume. There is no watermark, no logo and no footer added by
+                Resumake, and no download counter.
+              </p>
+            </details>
+            <details>
+              <summary>Do I need an email address to use it?</summary>
+              <p>
+                No. Resumake never asks for an email address, does not send verification links and has no password to
+                reset. Nothing is sent to your inbox.
+              </p>
+            </details>
+            <details>
+              <summary>Can I switch templates after I start?</summary>
+              <p>
+                Yes. Switch between Classic, Modern and Minimal at any time. Your content stays the same and the layout
+                is re-rendered instantly.
+              </p>
+            </details>
+            <details>
+              <summary>Does it work on a phone or tablet?</summary>
+              <p>
+                It works in modern desktop and tablet browsers. On a phone the editor opens, but the split
+                form-and-preview layout is cramped; a desktop or tablet is the better experience.
+              </p>
+            </details>
+            <details>
+              <summary>Can I export to Word or DOCX?</summary>
+              <p>
+                No. Resumake exports PDF only, because PDF preserves the exact layout recruiters and applicant tracking
+                systems expect.
+              </p>
+            </details>
+            <details>
+              <summary>What happens if I clear my browser data?</summary>
+              <p>
+                Your draft is stored in this browser, so clearing site data removes it. Use Save backup in the editor to
+                download a JSON file you can restore later or on another device.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="block alt" id="guides">
+        <div class="container">
+          <div class="section-head">
+            <h2>Guides</h2>
+            <p>Deeper answers to the questions people ask before choosing a resume builder.</p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <h3><a href="/private-resume-builder/">A private resume builder</a></h3>
+              <p>Where your data is stored, what is never uploaded, and how to back it up.</p>
+            </article>
+            <article class="card">
+              <h3><a href="/resume-builder-no-sign-up/">No sign-up, no email</a></h3>
+              <p>What "no account" really means, and what you give up in exchange.</p>
+            </article>
+            <article class="card">
+              <h3><a href="/free-resume-builder-no-watermark/">Free, with no watermark</a></h3>
+              <p>How the free model works and where the limits actually are.</p>
+            </article>
+            <article class="card">
+              <h3><a href="/ats-friendly-resume-builder/">ATS-friendly PDFs</a></h3>
+              <p>Why a text-based PDF parses better, and what to avoid.</p>
+            </article>
+            <article class="card">
+              <h3><a href="/templates/">Compare the templates</a></h3>
+              <p>Classic, Modern and Minimal — which one fits which role.</p>
+            </article>
+            <article class="card">
+              <h3><a href="/resume-builder-without-email/">Without an email address</a></h3>
+              <p>How saving and recovery work when there is no inbox involved.</p>
+            </article>
           </div>
         </div>
       </section>
@@ -317,6 +584,12 @@
     <footer class="site-footer">
       <div class="container">
         <span>© Resumake. Free and open for everyone.</span>
+        <span>
+          <a href="/private-resume-builder/">Private</a> ·
+          <a href="/resume-builder-no-sign-up/">No sign-up</a> ·
+          <a href="/ats-friendly-resume-builder/">ATS</a> ·
+          <a href="/templates/">Templates</a>
+        </span>
         <span><a href="/app/">Editor</a> · <a href="/zh/">中文版</a></span>
       </div>
     </footer>

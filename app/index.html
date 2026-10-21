@@ -1,21 +1,73 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resumake - Resume Editor</title>
-    <meta name="description" content="Resume editor: choose a template, fill in your details or adjust the look, preview on A4 or Letter, and export a PDF with selectable text." />
+    <title>Free Resume Editor — No Sign-Up | Resumake</title>
+    <meta
+      name="description"
+      content="The Resumake editor: choose a template, fill in your details, preview on A4 or Letter, and export an ATS-friendly PDF. No account, no upload."
+    />
     <meta name="robots" content="index,follow" />
     <meta name="google-site-verification" content="R4qJpITjCfoNZSlde8Nvbo_bxU8YLDkUfrFbyDbGq9Y" />
     <link rel="canonical" href="%SITE_URL%/app/" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+
     <meta property="og:site_name" content="Resumake" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Resumake - Resume Editor" />
+    <meta property="og:title" content="Free Resume Editor — No Sign-Up" />
+    <meta
+      property="og:description"
+      content="Choose a template, fill in your details, preview on A4 or Letter, and export an ATS-friendly PDF. No account, no upload."
+    />
     <meta property="og:url" content="%SITE_URL%/app/" />
+    <meta property="og:image" content="%SITE_URL%/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="%SITE_URL%/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Resumake Editor",
+        "url": "%SITE_URL%/app/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any (modern web browser)",
+        "inLanguage": ["en", "zh-CN"],
+        "description": "Browser-based resume editor with live A4 and Letter preview and ATS-friendly PDF export. No account and no upload.",
+        "isAccessibleForFree": true,
+        "dateModified": "%BUILD_DATE%",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "isPartOf": { "@type": "WebSite", "name": "Resumake", "url": "%SITE_URL%/" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "%SITE_URL%/" },
+          { "@type": "ListItem", "position": 2, "name": "Resume editor", "item": "%SITE_URL%/app/" }
+        ]
+      }
+    </script>
   </head>
   <body>
-    <div id="app"></div>
+    <!--
+      这段静态内容会被 Vue 挂载时替换掉。
+      它的作用是：在 JS 加载期间给用户一个交代，并让不执行 JS 的爬虫
+      （包括大多数 AI 抓取器）也能读到这个页面到底是什么。
+    -->
+    <div id="app">
+      <h1>Free resume editor — no sign-up, no paywall</h1>
+      <p>
+        Loading the editor… Build a resume, preview it on A4 or Letter, and export an ATS-friendly PDF with selectable
+        text. Your data stays in this browser.
+      </p>
+    </div>
     <script type="module" src="/src/main.ts"></script>
 
     <!-- Cloudflare Web Analytics：无 Cookie、不跨站追踪、不采集个人信息。

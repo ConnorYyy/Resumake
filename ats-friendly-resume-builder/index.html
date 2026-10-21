@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ATS-Friendly Resume Builder — Real Text PDF | Resumake</title>
+    <meta
+      name="description"
+      content="Build a resume that applicant tracking systems can parse. Resumake exports PDFs made of real selectable text, with standard headings and one column."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="R4qJpITjCfoNZSlde8Nvbo_bxU8YLDkUfrFbyDbGq9Y" />
+    <link rel="canonical" href="%SITE_URL%/ats-friendly-resume-builder/" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="stylesheet" href="/landing.css" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Resumake" />
+    <meta property="og:title" content="ATS-Friendly Resume Builder — Real Text, Not an Image" />
+    <meta property="og:description" content="Export a PDF made of real selectable text with standard headings and one column." />
+    <meta property="og:url" content="%SITE_URL%/ats-friendly-resume-builder/" />
+    <meta property="og:image" content="%SITE_URL%/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="%SITE_URL%/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "%SITE_URL%/" },
+          { "@type": "ListItem", "position": 2, "name": "ATS-friendly resume builder", "item": "%SITE_URL%/ats-friendly-resume-builder/" }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What makes a PDF ATS-friendly?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Three things: the PDF must contain a real text layer rather than an image of text, the section headings must use conventional names such as Experience and Education, and the layout should avoid multi-column tables and decorative graphics."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does Resumake create the PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It uses your browser's print engine to render the resume page into a PDF. The output contains real text and clickable links, not a screenshot."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it guaranteed to pass every ATS?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No builder can guarantee that, because every ATS scores differently. What Resumake removes is the most common technical failure: PDFs that are images and contain no readable text."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I check my own PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open the PDF and try to select and copy a line of text. If the text can be selected, an ATS can usually extract it too. If the whole page selects as one image, it cannot."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I include a photo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It depends on the market. ATS software ignores images, but in the US and UK photos are often discouraged, while they are common in parts of Europe and Asia. Resumake makes the photo optional."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I change margins for a one-page fit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Margins can be set from narrow to wide, and page breaks are marked in the preview so you can see where the PDF will split."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/">
+          <img src="/logo.svg" alt="Resumake logo" width="24" height="24" />
+          <span>Resumake</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a class="hide-sm" href="/#features">Features</a>
+          <a class="hide-sm" href="/templates/">Templates</a>
+          <a class="hide-sm" href="#faq">FAQ</a>
+          <a class="hide-sm" href="/zh/">中文</a>
+          <a class="btn small" href="/app/">Open editor</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1>An ATS-friendly resume builder that exports real text.</h1>
+          <p class="lead">
+            Resumake renders your resume with the browser's print engine, so the PDF contains a genuine text layer.
+            Applicant tracking systems can read every line, and recruiters can copy it.
+          </p>
+          <div class="actions">
+            <a class="btn" href="/app/">Build an ATS-friendly PDF</a>
+            <a class="btn ghost" href="#check">How to check your PDF</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="answers">
+        <div class="container">
+          <div class="section-head">
+            <h2>What makes a resume ATS-friendly?</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <h3>Three things matter: text layer, headings and layout.</h3>
+              <p>
+                The PDF must contain real text rather than an image of text. The section headings must use conventional
+                names such as Experience and Education. The layout should avoid multi-column tables and decorative
+                graphics that scramble reading order.
+              </p>
+            </article>
+            <article class="answer">
+              <h3>How does Resumake create the PDF?</h3>
+              <p>
+                It uses your browser's print engine to render the resume page into a PDF. The output contains real text
+                and clickable links, not a screenshot.
+              </p>
+              <p>
+                Because the PDF is generated locally, there is no server-side converter that might flatten text into
+                images.
+              </p>
+            </article>
+            <article class="answer">
+              <h3>Is it guaranteed to pass every ATS?</h3>
+              <p>
+                No builder can guarantee that, because every ATS scores differently. What Resumake removes is the most
+                common technical failure: PDFs that are images and contain no readable text.
+              </p>
+            </article>
+            <article class="answer">
+              <h3>What should I avoid in the content?</h3>
+              <p>
+                Avoid icons in place of labels, contact details inside page headers or footers, and text inside images.
+                Keep job titles and dates on one line each, and use the standard section names the system expects.
+              </p>
+            </article>
+            <article class="answer">
+              <h3>Should I include a photo?</h3>
+              <p>
+                It depends on the market. ATS software ignores images, but in the US and UK photos are often
+                discouraged, while they are common in parts of Europe and Asia. Resumake makes the photo optional.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block alt" id="check">
+        <div class="container">
+          <div class="section-head">
+            <h2>How to check whether your PDF is readable.</h2>
+          </div>
+          <ol class="steps">
+            <li>
+              <h3>Open the exported PDF</h3>
+              <p>Use any PDF reader, including the one built into your browser.</p>
+            </li>
+            <li>
+              <h3>Try to select a line of text</h3>
+              <p>If you can highlight and copy a sentence, an ATS can usually extract it too.</p>
+            </li>
+            <li>
+              <h3>Paste it into a text editor</h3>
+              <p>If the paste looks like your resume in reading order, the text layer survived.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="block" id="compare">
+        <div class="container">
+          <div class="section-head">
+            <h2>Text PDF vs image PDF.</h2>
+          </div>
+          <div class="compare-wrap">
+            <table class="compare">
+              <thead>
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>Resumake (text PDF)</th>
+                  <th>Image-based PDF</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Text can be selected</td>
+                  <td>Yes</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <td>ATS can extract keywords</td>
+                  <td>Yes</td>
+                  <td>Usually fails</td>
+                </tr>
+                <tr>
+                  <td>Links stay clickable</td>
+                  <td>Yes</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <td>Recruiters can copy details</td>
+                  <td>Yes</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <td>How it is produced</td>
+                  <td>Browser print engine, locally</td>
+                  <td>Screenshot or canvas export</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="block alt" id="faq">
+        <div class="container">
+          <div class="section-head">
+            <h2>Frequently asked questions</h2>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>What makes a PDF ATS-friendly?</summary>
+              <p>
+                Three things: the PDF must contain a real text layer rather than an image of text, the section headings
+                must use conventional names such as Experience and Education, and the layout should avoid multi-column
+                tables and decorative graphics.
+              </p>
+            </details>
+            <details>
+              <summary>How does Resumake create the PDF?</summary>
+              <p>
+                It uses your browser's print engine to render the resume page into a PDF. The output contains real text
+                and clickable links, not a screenshot.
+              </p>
+            </details>
+            <details>
+              <summary>Is it guaranteed to pass every ATS?</summary>
+              <p>
+                No builder can guarantee that, because every ATS scores differently. What Resumake removes is the most
+                common technical failure: PDFs that are images and contain no readable text.
+              </p>
+            </details>
+            <details>
+              <summary>How can I check my own PDF?</summary>
+              <p>
+                Open the PDF and try to select and copy a line of text. If the text can be selected, an ATS can usually
+                extract it too. If the whole page selects as one image, it cannot.
+              </p>
+            </details>
+            <details>
+              <summary>Should I include a photo?</summary>
+              <p>
+                It depends on the market. ATS software ignores images, but in the US and UK photos are often
+                discouraged, while they are common in parts of Europe and Asia. Resumake makes the photo optional.
+              </p>
+            </details>
+            <details>
+              <summary>Can I change margins for a one-page fit?</summary>
+              <p>
+                Yes. Margins can be set from narrow to wide, and page breaks are marked in the preview so you can see
+                where the PDF will split.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="container">
+          <h2>Export a PDF recruiters and robots can both read.</h2>
+          <p>Real text, real links, no account.</p>
+          <a class="btn" href="/app/">Open the editor</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>© Resumake. Independent project, not affiliated with resumake.io.</span>
+        <span>
+          <a href="/private-resume-builder/">Private</a> ·
+          <a href="/resume-builder-no-sign-up/">No sign-up</a> ·
+          <a href="/free-resume-builder-no-watermark/">No watermark</a> ·
+          <a href="/templates/">Templates</a> ·
+          <a href="/resume-builder-without-email/">No email</a>
+        </span>
+        <span><a href="/app/">Editor</a> · <a href="/zh/">中文版</a></span>
+      </div>
+    </footer>
+    <script type="module" src="/src/landing.ts"></script>
+    <script
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "36068ede1e0d43b0a4387d88b2398299"}'
+    ></script>
+  </body>
+</html>
