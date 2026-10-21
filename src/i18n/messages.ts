@@ -2,6 +2,7 @@ export type Messages = Record<string, string>;
 
 export const zhCN: Messages = {
   'app.title': 'Resumake - 简历生成器',
+  'app.heading': '免费在线简历编辑器 —— 无需注册',
   'app.loading': '正在加载…',
   'doc.title': '{name} - 简历',
   'doc.titleUntitled': '简历',
@@ -204,6 +205,7 @@ export const zhCN: Messages = {
 
 export const enUS: Messages = {
   'app.title': 'Resumake - Resume Builder',
+  'app.heading': 'Free resume editor — no sign-up',
   'app.loading': 'Loading…',
   'doc.title': '{name} - Resume',
   'doc.titleUntitled': 'Resume',

@@ -92,6 +92,8 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="app">
+    <h1 class="sr-only">{{ t('app.heading') }}</h1>
+
     <div v-if="!store.loaded" class="app-splash">
       <img src="/logo.svg" alt="Resumake logo" />
       <span>{{ t('app.loading') }}</span>
