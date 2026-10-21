@@ -94,6 +94,21 @@ README.md         项目说明
 | `public/apple-touch-icon.png` | 180×180，iOS 添加到主屏时自动识别 |
 | `public/templates/*.webp` | `/templates/` 的三套模板预览图，由编辑器真实渲染后抓取 |
 
+## 安全响应头
+
+`public/_headers` 由 Cloudflare Workers 的静态资源层解析，对全部资源生效：
+
+| 头 | 值 | 作用 |
+| --- | --- | --- |
+| `X-Content-Type-Options` | `nosniff` | 禁止浏览器猜测 MIME 类型 |
+| `Referrer-Policy` | `strict-origin-when-cross-origin` | 跨站只发送 origin |
+| `X-Frame-Options` | `DENY` | 禁止被 iframe 嵌套 |
+| `Permissions-Policy` | 关闭相机 / 麦克风 / 定位 | 最小权限 |
+| `Strict-Transport-Security` | `max-age=31536000; includeSubDomains` | 一年内强制 HTTPS |
+
+HSTS **没有** 加 `preload`：它需要向浏览器厂商提交名单，且移除周期很长。
+需要回滚时把 `max-age` 调小（例如 `300`）并重新部署，等浏览器里的旧策略自然过期即可。
+
 ## 每日用量快照
 
 `scripts/snapshot-usage.mjs` 把页面浏览与事件计数按天写入 `data/usage-daily.csv`，
