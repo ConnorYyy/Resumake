@@ -3,6 +3,10 @@ name: Deploy to Cloudflare Workers
 on:
   push:
     branches: [feature]
+    # 每日用量快照与本地文档不参与部署，避免无意义的重复构建
+    paths-ignore:
+      - 'data/**'
+      - 'docs/**'
   workflow_dispatch:
 
 # 同一分支的连续推送只保留最后一次部署

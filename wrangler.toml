@@ -13,3 +13,5 @@ workers_dev = false
 directory = "./dist"
 # 声明绑定后，Worker 可以把未命中的请求回落到静态资源处理
 binding = "ASSETS"
+# 未匹配到文件时返回 dist/404.html（而不是空白响应）
+not_found_handling = "404-page"

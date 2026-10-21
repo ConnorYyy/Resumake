@@ -1,0 +1,190 @@
+<!doctype html>
+<!--
+  每个页面的社交分享图（1200×630）生成器。
+  用法：npm run dev → 打开 http://localhost:5173/scripts/og-variants.html → 点「全部下载」，
+  把下载到的 og-*.jpg 放进 public/og/ 即可。
+
+  背景、品牌、网格都是 Canvas 画的，不依赖任何外部图片或字体文件。
+  改文案时同步改下面 VARIANTS 数组。
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Resumake og:image variants</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: #0b1220;
+        color: #e2e8f2;
+        font-family: 'Segoe UI', -apple-system, Arial, sans-serif;
+      }
+      button {
+        padding: 10px 18px;
+        border: 0;
+        border-radius: 999px;
+        background: #0071e3;
+        color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      canvas {
+        display: block;
+        width: 600px;
+        height: 315px;
+        margin: 16px 0;
+        border-radius: 8px;
+      }
+      .item p {
+        margin: 0;
+        font-size: 13px;
+        color: #8b98ab;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="download">全部下载</button>
+    <div id="out"></div>
+
+    <script>
+      const S = 1200;
+      const H = 630;
+      const FONT = '"Segoe UI", "Microsoft YaHei", -apple-system, Arial, sans-serif';
+
+      const VARIANTS = [
+        ['og-home', ['Free resume builder,', 'no sign-up'], '3 templates · A4 & Letter · Private by design'],
+        ['og-zh', ['免费在线简历生成器', '无需注册'], '导出 PDF · 数据只留在你的浏览器'],
+        ['og-app', ['Free resume editor'], 'Live preview · ATS-friendly PDF export'],
+        ['og-private', ['A private resume', 'builder'], 'Your data never leaves the browser'],
+        ['og-nosignup', ['No sign-up.', 'No email.'], 'Open the editor and start typing'],
+        ['og-nowatermark', ['Free, and', 'no watermark'], 'Unlimited PDF exports'],
+        ['og-ats', ['ATS-friendly', 'resume PDFs'], 'Real text, not an image'],
+        ['og-templates', ['Three resume', 'templates'], 'Classic · Modern · Minimal'],
+        ['og-noemail', ['No email', 'required'], 'No verification link, no inbox'],
+        ['og-zh-guide', ['免费简历生成器', '怎么选'], '在线制作 · 无需注册 · 导出 PDF'],
+      ];
+
+      function roundRect(ctx, x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + w, y, x + w, y + h, r);
+        ctx.arcTo(x + w, y + h, x, y + h, r);
+        ctx.arcTo(x, y + h, x, y, r);
+        ctx.arcTo(x, y, x + w, y, r);
+        ctx.closePath();
+      }
+
+      function draw(lines, sub) {
+        const canvas = document.createElement('canvas');
+        canvas.width = S;
+        canvas.height = H;
+        const ctx = canvas.getContext('2d');
+
+        const bg = ctx.createLinearGradient(0, 0, S, H);
+        bg.addColorStop(0, '#0a1018');
+        bg.addColorStop(0.48, '#111a2b');
+        bg.addColorStop(1, '#0a1018');
+        ctx.fillStyle = bg;
+        ctx.fillRect(0, 0, S, H);
+
+        const blue = ctx.createRadialGradient(1030, 30, 0, 1030, 30, 540);
+        blue.addColorStop(0, 'rgba(0,113,227,0.45)');
+        blue.addColorStop(1, 'rgba(0,113,227,0)');
+        ctx.fillStyle = blue;
+        ctx.fillRect(0, 0, S, H);
+
+        const teal = ctx.createRadialGradient(20, 650, 0, 20, 650, 470);
+        teal.addColorStop(0, 'rgba(13,148,136,0.33)');
+        teal.addColorStop(1, 'rgba(13,148,136,0)');
+        ctx.fillStyle = teal;
+        ctx.fillRect(0, 0, S, H);
+
+        ctx.strokeStyle = 'rgba(255,255,255,0.055)';
+        ctx.lineWidth = 1;
+        for (let x = 0; x < S; x += 64) {
+          ctx.beginPath();
+          ctx.moveTo(x + 0.5, 0);
+          ctx.lineTo(x + 0.5, H);
+          ctx.stroke();
+        }
+        for (let y = 0; y < H; y += 64) {
+          ctx.beginPath();
+          ctx.moveTo(0, y + 0.5);
+          ctx.lineTo(S, y + 0.5);
+          ctx.stroke();
+        }
+
+        // 品牌图标：与 public/logo.svg 同形，用 Path2D 复刻
+        const lx = 80;
+        const ly = 74;
+        const ls = 70;
+        const tile = ctx.createLinearGradient(lx, ly, lx, ly + ls);
+        tile.addColorStop(0, '#3a3a3a');
+        tile.addColorStop(0.55, '#161616');
+        tile.addColorStop(1, '#000000');
+        roundRect(ctx, lx, ly, ls, ls, 16);
+        ctx.fillStyle = tile;
+        ctx.fill();
+
+        ctx.save();
+        ctx.translate(lx, ly);
+        ctx.scale(ls / 64, ls / 64);
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 5.5;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.stroke(new Path2D('M22 47V17h11.5a8.5 8.5 0 0 1 0 17H22m12 0 9.5 13'));
+        ctx.restore();
+
+        ctx.fillStyle = '#ffffff';
+        ctx.textBaseline = 'middle';
+        ctx.font = '700 36px ' + FONT;
+        ctx.fillText('Resumake', lx + ls + 18, ly + ls / 2 + 2);
+
+        ctx.textBaseline = 'alphabetic';
+        ctx.font = '700 64px ' + FONT;
+        let y = 300;
+        for (const line of lines) {
+          ctx.fillText(line, 80, y);
+          y += 74;
+        }
+
+        if (sub) {
+          ctx.font = '400 26px ' + FONT;
+          ctx.fillStyle = '#b6c2d4';
+          ctx.fillText(sub, 80, y + 18);
+        }
+
+        ctx.font = '400 20px ' + FONT;
+        ctx.fillStyle = 'rgba(182,194,212,0.6)';
+        ctx.fillText('resumake.online', 80, H - 52);
+
+        return canvas;
+      }
+
+      const out = document.getElementById('out');
+      const canvases = VARIANTS.map(([slug, lines, sub]) => {
+        const canvas = draw(lines, sub);
+        const wrap = document.createElement('div');
+        wrap.className = 'item';
+        wrap.append(canvas);
+        const label = document.createElement('p');
+        label.textContent = slug + '.jpg';
+        wrap.append(label);
+        out.append(wrap);
+        return { slug, canvas };
+      });
+
+      document.getElementById('download').addEventListener('click', () => {
+        for (const { slug, canvas } of canvases) {
+          const a = document.createElement('a');
+          a.href = canvas.toDataURL('image/jpeg', 0.9);
+          a.download = slug + '.jpg';
+          document.body.append(a);
+          a.click();
+          a.remove();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -13,22 +13,25 @@ const RELEASE = `resumake@${pkg.version}`;
  *
  * localized = true 的页面参与中英 hreflang 互指（首页与中文首页）。
  * 内容页各自独立，互不翻译，因此不加 alternate。
+ *
+ * updated 是这一页「内容真正改动」的日期，不是构建日期：
+ * 每次都写今天会让 Google 判定 lastmod 不可信，从而忽略它。
+ * 改动某个页面的正文后，记得同步改这里的日期。
  */
 const SITEMAP_PAGES = [
-  { loc: '/', priority: '1.0', localized: true },
-  { loc: '/zh/', priority: '0.9', localized: true },
-  { loc: '/app/', priority: '0.7', localized: false },
-  { loc: '/private-resume-builder/', priority: '0.8', localized: false },
-  { loc: '/resume-builder-no-sign-up/', priority: '0.8', localized: false },
-  { loc: '/free-resume-builder-no-watermark/', priority: '0.8', localized: false },
-  { loc: '/ats-friendly-resume-builder/', priority: '0.8', localized: false },
-  { loc: '/templates/', priority: '0.7', localized: false },
-  { loc: '/resume-builder-without-email/', priority: '0.7', localized: false },
-  { loc: '/zh/jianli-shengchengqi/', priority: '0.7', localized: false },
+  { loc: '/', priority: '1.0', localized: true, updated: '2026-10-21' },
+  { loc: '/zh/', priority: '0.9', localized: true, updated: '2026-10-21' },
+  { loc: '/app/', priority: '0.7', localized: false, updated: '2026-10-21' },
+  { loc: '/private-resume-builder/', priority: '0.8', localized: false, updated: '2026-10-21' },
+  { loc: '/resume-builder-no-sign-up/', priority: '0.8', localized: false, updated: '2026-10-21' },
+  { loc: '/free-resume-builder-no-watermark/', priority: '0.8', localized: false, updated: '2026-10-21' },
+  { loc: '/ats-friendly-resume-builder/', priority: '0.8', localized: false, updated: '2026-10-21' },
+  { loc: '/templates/', priority: '0.7', localized: false, updated: '2026-10-21' },
+  { loc: '/resume-builder-without-email/', priority: '0.7', localized: false, updated: '2026-10-21' },
+  { loc: '/zh/jianli-shengchengqi/', priority: '0.7', localized: false, updated: '2026-10-21' },
 ];
 
 function buildSitemap(): string {
-  const today = new Date().toISOString().slice(0, 10);
   const entries = SITEMAP_PAGES.map((page) => {
     const alternates = page.localized
       ? `
@@ -38,7 +41,7 @@ function buildSitemap(): string {
       : '';
     return `  <url>
     <loc>${SITE_URL}${page.loc}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${page.updated}</lastmod>
     <priority>${page.priority}</priority>${alternates}
   </url>`;
   }).join('\n');
@@ -117,6 +120,7 @@ export default defineConfig(({ mode }) => {
           main: 'index.html',
           zh: 'zh/index.html',
           app: 'app/index.html',
+          notFound: '404.html',
           privateResumeBuilder: 'private-resume-builder/index.html',
           noSignUp: 'resume-builder-no-sign-up/index.html',
           noWatermark: 'free-resume-builder-no-watermark/index.html',

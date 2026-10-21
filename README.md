@@ -73,12 +73,32 @@ README.md         项目说明
 
 ## 社交分享图（og:image）
 
-`public/og-image.png` 是 1200×630 的对外分享图，源文件为 `scripts/og-image.html`。改动后重新生成：
+每个页面都有独立的 1200×630 分享图，放在 `public/og/`（如 `og-home.jpg`、`og-zh.jpg`、`og-ats.jpg`），
+分别被对应页面的 `og:image` / `twitter:image` 引用。它们是 Canvas 绘制的（深色渐变 + 网格 + 品牌 + 页面标题），
+不依赖外部图片或字体文件。
+
+改动文案后重新生成：
 
 1. `npm run dev`
-2. 打开 `http://localhost:5173/scripts/og-image.html`
-3. 把浏览器视口设为 1200×630，截图（设备像素比为 1），保存覆盖 `public/og-image.png`
-4. `index.html` 与 `zh/index.html` 中的 `og:image` / `twitter:image` 已指向该文件
+2. 打开 `http://localhost:5173/scripts/og-variants.html`
+3. 点「全部下载」，把得到的 `og-*.jpg` 覆盖到 `public/og/`
+
+`public/og-image.png` 是最早的通用兜底图，源文件为 `scripts/og-image.html`。
+
+## 404 与图标
+
+| 文件 | 作用 |
+| --- | --- |
+| `404.html` | 未匹配路径的兜底页（`wrangler.toml` 的 `not_found_handling = "404-page"`），带 `noindex` |
+| `public/favicon.ico` | 32×32，浏览器默认请求 `/favicon.ico` 时使用 |
+| `public/apple-touch-icon.png` | 180×180，iOS 添加到主屏时自动识别 |
+| `public/templates/*.webp` | `/templates/` 的三套模板预览图，由编辑器真实渲染后抓取 |
+
+## 每日用量快照
+
+`scripts/snapshot-usage.mjs` 把页面浏览与事件计数按天写入 `data/usage-daily.csv`，
+并由 `.github/workflows/usage-snapshot.yml` 每天 01:20 UTC 自动运行、提交。
+部署工作流用 `paths-ignore` 忽略 `data/**`，所以数据提交不会触发重复构建。各列含义见 `data/README.md`。
 
 ## 赞助入口
 
