@@ -28,4 +28,33 @@ describe('checkup', () => {
     expect(blank?.params?.n).toBe(1);
     expect(multi?.level).toBe('warn');
   });
+
+  it('结束时间早于开始时间时报错', () => {
+    const doc = createSample('en-US');
+    const item = doc.experience[0];
+    item.periodStart = '2020-06';
+    item.periodEnd = '2019-01';
+    item.present = '';
+
+    const issue = checkup(doc, 1, 0).find((i) => i.key === 'check.reversedDate');
+    expect(issue?.level).toBe('error');
+    expect(issue?.params?.n).toBe(1);
+  });
+
+  it('有内容却缺开始时间时提示', () => {
+    const doc = createSample('en-US');
+    const item = doc.experience[0];
+    item.periodStart = '';
+    item.present = '';
+
+    expect(checkup(doc, 1, 0).some((i) => i.key === 'check.missingPeriod')).toBe(true);
+  });
+
+  it('单行超过 140 字符时提示', () => {
+    const doc = createSample('en-US');
+    doc.experience[0].description = 'x'.repeat(160);
+
+    const issue = checkup(doc, 1, 0).find((i) => i.key === 'check.longLine');
+    expect(issue?.params?.n).toBe(1);
+  });
 });

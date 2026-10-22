@@ -10,7 +10,7 @@ describe('translate', () => {
 
   it('替换参数', () => {
     expect(translate('en-US', 'status.pages', { n: 3 })).toBe('Pages: 3');
-    expect(translate('zh-CN', 'preview.pageEnd', { n: 2 })).toBe('第 2 页结束');
+    expect(translate('zh-CN', 'preview.pageEnd', { n: 2, next: 3 })).toBe('第 2 页结束 · 第 3 页开始');
   });
 
   it('缺失的 key 回退为 key 本身', () => {

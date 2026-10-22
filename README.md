@@ -121,13 +121,27 @@ HSTS **没有** 加 `preload`：它需要向浏览器厂商提交名单，且移
 
 ## 数据与隐私
 
-所有简历数据只保存在当前浏览器中，应用不会把内容上传到服务器。清除浏览器数据会导致简历丢失，建议定期导出 JSON 备份。
+所有简历数据只保存在当前浏览器中，应用默认不会把内容上传到服务器。唯一的例外是编辑器里的**可选**「AI 优化」按钮：只有你主动点击时，才会把你正在编辑的那一段文字发送给 AI 服务并返回改写结果，不会发送照片、联系方式或其他分节，结果也不会被保存（`worker/ai.ts`）。清除浏览器数据会导致简历丢失，建议定期导出 JSON 备份。
 
 编辑器与落地页接入了 Sentry 用于发现线上崩溃，但上报内容**严格限定为程序异常本身**：不含简历内容、表单字段或照片；客户端也不发送用户信息（IP）、Cookie、请求头/请求体、URL 查询参数与栈帧局部变量，且不记录面包屑与会话统计（Sentry 服务端仍可能按连接 IP 推断国家/城市级别的地理位置，当前未开启其"不存储 IP"设置）。实现见 `src/services/telemetry.ts`（发送前统一清洗）与 `src/services/telemetryScrub.ts`。把 `VITE_SENTRY_DSN` 留空即可整体关闭上报。
 
 访问量统计使用 **Cloudflare Web Analytics**：无 Cookie、不跨站追踪、不采集个人信息，只提供聚合的页面浏览量。脚本标签直接写在 `index.html`、`zh/index.html`、`app/index.html` 里，删掉那段 `<script>` 即可彻底关闭统计。
 
 功能使用计数（"编辑器被打开" / "PDF 被导出"）由 `worker/index.ts` 处理：前端以 `POST /api/event/<事件名>` 的形式发送，Worker 校验白名单后返回 204，**请求本身即被 Cloudflare 边缘统计记录**。只上报事件名，**不含简历内容、Cookie 或任何身份标识**，数据留在自己的 Cloudflare 账号内，不经过第三方，也不需要数据库。前端发送逻辑见 `src/services/usage.ts`，本地开发（非 PROD）不发送。想关闭：移除 `trackUsage()` 调用即可（Worker 中没有命中事件路径时会照常回落静态资源）。
+
+## AI 优化（可选）
+
+编辑器里每个长文本输入框右下角的 `✦ AI` 按钮。**按钮是否显示由运行时探测决定**：前端请求 `GET /api/ai/status`，Worker 配了 key 才返回 `{ enabled: true }`，因此不存在「按钮在但接口没配置」的错位，也不需要重新构建前端。
+
+| 项目 | 说明 |
+| --- | --- |
+| 本地启用 | 在 `.env.local` 写 `OPENCODE_GO_API_KEY=...`，dev server 的中间件会读取并直接调用模型 |
+| 生产启用 | `npx wrangler secret put OPENCODE_GO_API_KEY`（或控制台添加 Secret） |
+| 临时关闭 | 删掉这个 Secret 即可：`/api/ai/status` 返回 `enabled: false`，按钮自动消失 |
+| 模型 | 默认 `deepseek-v4.1-flash`，失败时兜底 `mimo-v2.6-flash`；可用 `AI_MODEL` / `AI_FALLBACK_MODEL` 覆盖 |
+| 限制 | 输入 600 字符、每 IP 12 次/分钟、单次超时 12 秒 |
+| 发送内容 | 只有用户点按钮时选中的那段文字 + 语言 + 字段名，不含照片、联系方式或其他分节 |
+| 实现 | 服务端 `worker/ai.ts`，前端 `src/services/aiRewrite.ts` + `src/components/AiTextarea.vue` |
 
 ## 文档
 

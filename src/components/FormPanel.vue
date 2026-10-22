@@ -7,6 +7,7 @@ import { fileToAvatar } from '../services/image';
 import { useI18n } from '../i18n';
 import DateField from './DateField.vue';
 import DateRangeField from './DateRangeField.vue';
+import AiTextarea from './AiTextarea.vue';
 import type { ListItem, ListKey, PhotoAlign, ProfileKey, SectionKey, SectionTitleKey } from '../types';
 
 const store = useResumeStore();
@@ -172,11 +173,12 @@ function removeItem(list: ListKey, id: string) {
       <div class="grid">
         <label v-for="field in basicFields" :key="field.key" :class="{ wide: field.type === 'textarea' }">
           <span>{{ t(field.label) }}</span>
-          <textarea
+          <AiTextarea
             v-if="field.type === 'textarea'"
-            :value="store.doc.profile[field.key]"
-            rows="4"
-            @input="onProfile(field.key, $event)"
+            :model-value="store.doc.profile[field.key] ?? ''"
+            :field="field.key"
+            :rows="4"
+            @update:model-value="store.setProfileField(field.key, $event)"
           />
           <input
             v-else
@@ -237,7 +239,12 @@ function removeItem(list: ListKey, id: string) {
       <template v-if="!card.isList">
         <label class="wide">
           <span>{{ t('field.summary') }}</span>
-          <textarea :value="store.doc.profile.summary" rows="4" @input="onProfile('summary', $event)" />
+          <AiTextarea
+            :model-value="store.doc.profile.summary"
+            field="summary"
+            :rows="4"
+            @update:model-value="store.setProfileField('summary', $event)"
+          />
         </label>
       </template>
 
@@ -295,11 +302,12 @@ function removeItem(list: ListKey, id: string) {
                 :model-value="item[field.key] ?? ''"
                 @update:model-value="onDatePart(card.listKey, item.id, field.key, $event)"
               />
-              <textarea
+              <AiTextarea
                 v-else-if="field.type === 'textarea'"
-                :value="item[field.key]"
-                rows="3"
-                @input="onItem(card.listKey, item.id, field.key, $event)"
+                :model-value="item[field.key] ?? ''"
+                :field="field.key"
+                :rows="3"
+                @update:model-value="store.setItemField(card.listKey, item.id, field.key, $event)"
               />
               <input
                 v-else

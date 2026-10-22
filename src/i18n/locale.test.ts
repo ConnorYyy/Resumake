@@ -1,42 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { detectLocale, localeFromSearch, parseLocaleParam, resolveInitialLocale } from './locale';
-
-function withBrowserLanguages(languages: string[]) {
-  vi.stubGlobal('navigator', { languages, language: languages[0] });
-}
+import { localeFromSearch, parseLocaleParam, resolveInitialLocale } from './locale';
 
 afterEach(() => vi.unstubAllGlobals());
-
-describe('detectLocale', () => {
-  it('中文浏览器使用中文', () => {
-    withBrowserLanguages(['zh-CN', 'zh']);
-    expect(detectLocale()).toBe('zh-CN');
-  });
-
-  it('中文变体（繁体、新加坡）也使用中文', () => {
-    withBrowserLanguages(['zh-Hant-TW']);
-    expect(detectLocale()).toBe('zh-CN');
-    withBrowserLanguages(['zh-Hans-SG']);
-    expect(detectLocale()).toBe('zh-CN');
-  });
-
-  it('英文浏览器使用英文', () => {
-    withBrowserLanguages(['en-US', 'en']);
-    expect(detectLocale()).toBe('en-US');
-  });
-
-  it('其他语言一律回退到英文（面向海外用户）', () => {
-    withBrowserLanguages(['fr-FR', 'fr']);
-    expect(detectLocale()).toBe('en-US');
-    withBrowserLanguages(['de']);
-    expect(detectLocale()).toBe('en-US');
-  });
-
-  it('只有 navigator.language 时也能判断', () => {
-    vi.stubGlobal('navigator', { languages: [], language: 'zh-CN' });
-    expect(detectLocale()).toBe('zh-CN');
-  });
-});
 
 describe('parseLocaleParam', () => {
   it('识别中英文及常见变体', () => {
@@ -71,21 +36,21 @@ describe('localeFromSearch', () => {
 });
 
 describe('resolveInitialLocale', () => {
-  it('URL 参数优先于浏览器语言', () => {
-    withBrowserLanguages(['zh-CN']);
-    vi.stubGlobal('location', { search: '?lang=en' });
+  it('地址上没有参数时默认英文，与浏览器语言无关', () => {
+    vi.stubGlobal('navigator', { languages: ['zh-CN', 'zh'], language: 'zh-CN' });
+    vi.stubGlobal('location', { search: '' });
     expect(resolveInitialLocale()).toBe('en-US');
   });
 
-  it('中文站链接让中文浏览器保持中文', () => {
-    withBrowserLanguages(['en-US']);
+  it('从中文落地页进来（?lang=zh）时用中文', () => {
+    vi.stubGlobal('navigator', { languages: ['en-US'], language: 'en-US' });
     vi.stubGlobal('location', { search: '?lang=zh' });
     expect(resolveInitialLocale()).toBe('zh-CN');
   });
 
-  it('没有参数时回退到浏览器语言', () => {
-    withBrowserLanguages(['zh-CN']);
-    vi.stubGlobal('location', { search: '' });
-    expect(resolveInitialLocale()).toBe('zh-CN');
+  it('从英文落地页进来（?lang=en）时用英文', () => {
+    vi.stubGlobal('navigator', { languages: ['zh-CN'], language: 'zh-CN' });
+    vi.stubGlobal('location', { search: '?lang=en' });
+    expect(resolveInitialLocale()).toBe('en-US');
   });
 });

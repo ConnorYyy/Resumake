@@ -5,6 +5,7 @@ import { MARGIN, PAPER } from '../engine/document';
 import { computePageMetrics, type FlowUnit } from '../engine/pagination';
 import { checkup } from '../engine/checkup';
 import { useI18n } from '../i18n';
+import { showToast } from '../composables/useToast';
 
 const emit = defineEmits<{ printClosed: [] }>();
 const store = useResumeStore();
@@ -135,6 +136,13 @@ async function fitToOnePage() {
   } finally {
     fitting.value = false;
   }
+
+  showToast(
+    t('toast.fitted', {
+      percent: Math.round(store.doc.meta.fontScale * 100),
+      pages: store.pageCount,
+    }),
+  );
 }
 
 function changeZoom(delta: number) {
@@ -203,7 +211,7 @@ onBeforeUnmount(() => clearTimeout(timer));
             class="page-line"
             :style="{ top: line + 'px' }"
           >
-            <span>{{ t('preview.pageEnd', { n: index + 1 }) }}</span>
+            <span>{{ t('preview.pageEnd', { n: index + 1, next: index + 2 }) }}</span>
           </div>
         </div>
       </div>

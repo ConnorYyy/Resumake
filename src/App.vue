@@ -11,12 +11,14 @@ import { useI18n } from './i18n';
 import { SUPPORT_ENABLED, SUPPORT_URL } from './config/support';
 import { readLastPromptAt, shouldPromptSupport, writeLastPromptAt } from './services/support';
 import { trackUsage } from './services/usage';
+import { useToast } from './composables/useToast';
 
 const store = useResumeStore();
 const { t } = useI18n();
 const preview = ref<InstanceType<typeof Preview>>();
 const showPrintDialog = ref(false);
 const showThanks = ref(false);
+const { toasts } = useToast();
 
 const modes: { value: EditorMode; label: string }[] = [
   { value: 'form', label: 'mode.form' },
@@ -168,6 +170,11 @@ onBeforeUnmount(() => {
           </a>
         </div>
       </div>
+    </div>
+
+    <!-- 轻提示：切换语言 / 模板、压缩到一页等操作的反馈 -->
+    <div class="toasts" aria-live="polite">
+      <div v-for="toast in toasts" :key="toast.id" class="toast">{{ toast.text }}</div>
     </div>
   </div>
 </template>
@@ -361,6 +368,41 @@ onBeforeUnmount(() => {
 
   .preview-wrap {
     height: 70vh;
+  }
+}
+
+/* 轻提示 */
+.toasts {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.toast {
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: rgba(29, 29, 31, 0.92);
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.4;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  animation: toast-in 0.18s ease both;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 </style>

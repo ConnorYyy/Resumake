@@ -1,14 +1,13 @@
 import type { Locale } from '../types';
 
 /**
- * 首次访问（本地还没有保存内容）时按浏览器语言选择界面语言。
- * 中文浏览器用中文，其余一律用英文 —— 面向海外用户，英文是更安全的默认值。
+ * 没有任何线索时的默认语言。
+ *
+ * 站点面向海外用户，所以直接访问 /app/（地址上没有 ?lang=）时
+ * 界面与示例简历都用英文。从中文落地页进来时链接会带上 ?lang=zh，
+ * 仍然是中文，不受这里影响。
  */
-export function detectLocale(): Locale {
-  if (typeof navigator === 'undefined') return 'en-US';
-  const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
-  return languages.some((lang) => /^zh\b/i.test(lang ?? '')) ? 'zh-CN' : 'en-US';
-}
+export const DEFAULT_LOCALE: Locale = 'en-US';
 
 /** 落地页链接上使用的查询参数名：/app/?lang=en */
 export const LOCALE_QUERY_KEY = 'lang';
@@ -31,10 +30,11 @@ export function localeFromSearch(search?: string): Locale | null {
 /**
  * 编辑器首次进入时使用的语言。
  *
- * 落地页会在指向编辑器的链接上带 ?lang=，所以从英文首页进来就是英文，
- * 从 /zh/ 进来就是中文。直接访问 /app/ 或从书签进入时没有该参数，
- * 再退回浏览器语言。已保存的简历不受影响 —— 它自带语言设置。
+ * 落地页会在指向编辑器的链接上带 ?lang=，所以从英文首页进来是英文，
+ * 从 /zh/ 进来是中文。直接访问 /app/ 或从书签进入时没有该参数，
+ * 一律回退到英文（默认语言），不再按浏览器语言猜测。
+ * 已保存的简历不受影响 —— 它自带语言设置。
  */
 export function resolveInitialLocale(): Locale {
-  return localeFromSearch() ?? detectLocale();
+  return localeFromSearch() ?? DEFAULT_LOCALE;
 }

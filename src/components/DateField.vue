@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useI18n } from '../i18n';
 
 const props = defineProps<{ modelValue: string; disabled?: boolean }>();
 const emit = defineEmits<{ 'update:modelValue': [value: string] }>();
+
+const { t } = useI18n();
 
 const currentYear = new Date().getFullYear();
 const latestYear = currentYear + 3;
@@ -36,12 +39,18 @@ function onMonth(event: Event) {
 
 <template>
   <span class="date-field">
-    <select class="year" :value="parts.year" :disabled="disabled" aria-label="YYYY" @change="onYear">
-      <option value="">YYYY</option>
+    <select class="year" :value="parts.year" :disabled="disabled" :aria-label="t('date.yearLabel')" @change="onYear">
+      <option value="">{{ t('date.yearPlaceholder') }}</option>
       <option v-for="year in years" :key="year" :value="String(year)">{{ year }}</option>
     </select>
-    <select class="month" :value="parts.month" :disabled="disabled || !parts.year" aria-label="MM" @change="onMonth">
-      <option value="">MM</option>
+    <select
+      class="month"
+      :value="parts.month"
+      :disabled="disabled || !parts.year"
+      :aria-label="t('date.monthLabel')"
+      @change="onMonth"
+    >
+      <option value="">{{ t('date.monthPlaceholder') }}</option>
       <option v-for="month in months" :key="month" :value="month">{{ month }}</option>
     </select>
   </span>

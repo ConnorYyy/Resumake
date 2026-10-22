@@ -4,6 +4,7 @@ import { loadEnv } from 'vite';
 import { sentryVitePlugin } from '@sentry/vite-plugin';
 import siteConfig from './site.config.json' with { type: 'json' };
 import pkg from './package.json' with { type: 'json' };
+import { handleAiRewrite } from './worker/ai.ts';
 
 const SITE_URL = siteConfig.siteUrl.replace(/\/+$/, '');
 const RELEASE = `resumake@${pkg.version}`;
@@ -53,14 +54,21 @@ ${entries}
 `;
 }
 
-/** 替换 HTML 中的 %SITE_URL% / %BUILD_DATE%，并生成 sitemap.xml 与 robots.txt */
-function seoPlugin(): Plugin {
+/** 替换 HTML 中的 %SITE_URL% / %BUILD_DATE%，并生成 sitemap.xml 与 robots.txt */function seoPlugin(): Plugin {
   return {
     name: 'resumake-seo',
-    transformIndexHtml(html) {
-      return html
+    transformIndexHtml(html, ctx) {
+      let out = html
         .replace(/%SITE_URL%/g, SITE_URL)
         .replace(/%BUILD_DATE%/g, new Date().toISOString().slice(0, 10));
+
+      // 开发服务器上 Cloudflare Web Analytics 会被 CORS 拦截，产生无意义的报错。
+      // 生产构建保持原样。
+      if (ctx.server) {
+        out = out.replace(/<script[^>]*static\.cloudflareinsights\.com[\s\S]*?<\/script>/g, '');
+      }
+
+      return out;
     },
     generateBundle() {
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: buildSitemap() });
@@ -68,6 +76,97 @@ function seoPlugin(): Plugin {
         type: 'asset',
         fileName: 'robots.txt',
         source: `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`,
+      });
+    },
+  };
+}
+
+/**
+ * 本地开发时用 Vite 中间件代替 Worker 处理 /api/ai/rewrite。
+ * 与生产共用 worker/ai.ts，所以本地验证的就是线上那套逻辑。
+ * Key 从 .env.local 读取（不带 VITE_ 前缀，不会进入前端产物）。
+ *
+ * 项目没有装 @types/node，这里用局部接口描述真正用到的那几个成员。
+ */
+interface DevRequest {
+  method?: string;
+  headers: Record<string, string | string[] | undefined>;
+  setEncoding(encoding: string): void;
+  on(event: 'data', listener: (chunk: string) => void): void;
+  on(event: 'end', listener: () => void): void;
+}
+
+interface DevResponse {
+  statusCode: number;
+  setHeader(name: string, value: string): void;
+  end(body?: string): void;
+}
+
+function aiDevPlugin(apiKey: string | undefined, model: string | undefined): Plugin {
+  return {
+    name: 'resumake-ai-dev',
+    apply: 'serve',
+    configureServer(server) {
+      // 本地也提供状态探测，行为与线上一致
+      server.middlewares.use('/api/ai/status', (rawReq, rawRes) => {
+        const req = rawReq as unknown as DevRequest;
+        const res = rawRes as unknown as DevResponse;
+
+        if (req.method !== 'GET') {
+          res.statusCode = 405;
+          res.end('Method Not Allowed');
+          return;
+        }
+
+        res.statusCode = 200;
+        res.setHeader('content-type', 'application/json; charset=utf-8');
+        res.setHeader('cache-control', 'no-store');
+        res.end(JSON.stringify({ enabled: Boolean(apiKey) }));
+      });
+
+      server.middlewares.use('/api/ai/rewrite', (rawReq, rawRes) => {
+        const req = rawReq as unknown as DevRequest;
+        const res = rawRes as unknown as DevResponse;
+
+        if (req.method !== 'POST') {
+          res.statusCode = 405;
+          res.end('Method Not Allowed');
+          return;
+        }
+
+        let body = '';
+        req.setEncoding('utf8');
+        req.on('data', (chunk: string) => {
+          body += chunk;
+        });
+        req.on('end', () => {
+          void (async () => {
+            const rawType = req.headers['content-type'];
+            const contentType = Array.isArray(rawType) ? rawType[0] : (rawType ?? 'application/json');
+
+            const request = new Request('http://localhost/api/ai/rewrite', {
+              method: 'POST',
+              headers: {
+                'content-type': contentType,
+                'cf-connecting-ip': '127.0.0.1',
+              },
+              body,
+            });
+
+            try {
+              const response = await handleAiRewrite(request, {
+                OPENCODE_GO_API_KEY: apiKey,
+                AI_MODEL: model,
+              });
+              res.statusCode = response.status;
+              response.headers.forEach((value, key) => res.setHeader(key, value));
+              res.end(await response.text());
+            } catch (err) {
+              res.statusCode = 500;
+              res.end(JSON.stringify({ error: 'dev_proxy_failed', detail: String(err).slice(0, 160) }));
+            }
+          })();
+        });
       });
     },
   };
@@ -91,6 +190,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue(),
       seoPlugin(),
+      aiDevPlugin(env.OPENCODE_GO_API_KEY, env.AI_MODEL),
       ...(withSentryUpload
         ? [
             sentryVitePlugin({
@@ -133,7 +233,7 @@ export default defineConfig(({ mode }) => {
     },
     test: {
       environment: 'node',
-      include: ['src/**/*.test.ts'],
+      include: ['src/**/*.test.ts', 'worker/**/*.test.ts'],
       css: { include: [/.+/] },
     },
   };

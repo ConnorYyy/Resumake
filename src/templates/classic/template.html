@@ -18,7 +18,7 @@
   <h2>{{labels.experience}}</h2>
   {{#experience}}
   <div class="block entry">
-    <div class="row"><strong>{{company}}</strong>{{#period}}<span class="period">{{period}}</span>{{/period}}</div>
+    <div class="row"><strong>{{company}}</strong>{{#period}}<span class="period">&nbsp;{{period}}</span>{{/period}}</div>
     <div class="sub">{{role}}{{#location}} · {{location}}{{/location}}</div>
     {{{descriptionHtml}}}
   </div>
@@ -31,7 +31,7 @@
   <h2>{{labels.projects}}</h2>
   {{#projects}}
   <div class="block entry">
-    <div class="row"><strong>{{name}}</strong>{{#period}}<span class="period">{{period}}</span>{{/period}}</div>
+    <div class="row"><strong>{{name}}</strong>{{#period}}<span class="period">&nbsp;{{period}}</span>{{/period}}</div>
     <div class="sub">{{role}}{{#link}} · <a href="{{{linkHref}}}">{{link}}</a>{{/link}}</div>
     {{{descriptionHtml}}}
   </div>
@@ -44,7 +44,7 @@
   <h2>{{labels.education}}</h2>
   {{#education}}
   <div class="block entry">
-    <div class="row"><strong>{{school}}</strong>{{#period}}<span class="period">{{period}}</span>{{/period}}</div>
+    <div class="row"><strong>{{school}}</strong>{{#period}}<span class="period">&nbsp;{{period}}</span>{{/period}}</div>
     <div class="sub">{{major}}{{#degree}} · {{degree}}{{/degree}}</div>
     {{{descriptionHtml}}}
   </div>
@@ -65,7 +65,7 @@
 <section class="block" data-section="certificates">
   <h2>{{labels.certificates}}</h2>
   {{#certificates}}
-  <div class="row"><span>{{name}}{{#issuer}} · {{issuer}}{{/issuer}}</span>{{#date}}<span class="period">{{date}}</span>{{/date}}</div>
+  <div class="row"><span>{{name}}{{#issuer}} · {{issuer}}{{/issuer}}</span>{{#date}}<span class="period">&nbsp;{{date}}</span>{{/date}}</div>
   {{/certificates}}
 </section>
 {{/hasCertificates}}

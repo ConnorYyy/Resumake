@@ -7,6 +7,7 @@ import { validateResumeFile } from '../engine/validate';
 import { DATE_FORMATS, formatDate } from '../engine/date';
 import { exportHtml, exportJson, readJsonFile } from '../services/io';
 import { useI18n } from '../i18n';
+import { showToast } from '../composables/useToast';
 import ThemePicker from './ThemePicker.vue';
 import type { DateFormat, Locale, MarginPreset, PaperSize } from '../types';
 
@@ -25,16 +26,24 @@ const dateFormatOptions = computed(() =>
 const fontScaleOptions = FONT_SCALE_OPTIONS;
 
 function onTemplate(event: Event) {
-  const id = (event.target as HTMLSelectElement).value;
+  const select = event.target as HTMLSelectElement;
+  const id = select.value;
   if (store.isDetached && !confirm(t('confirm.switchTemplate'))) {
-    (event.target as HTMLSelectElement).value = store.doc.meta.templateId;
+    select.value = store.doc.meta.templateId;
     return;
   }
   store.setTemplate(id);
+
+  const nameKey = TEMPLATES.find((tpl) => tpl.id === id)?.name;
+  // 等预览重新测量后再报页数，否则拿到的是切换前的值
+  setTimeout(() => {
+    showToast(t('toast.template', { name: nameKey ? t(nameKey) : id, pages: store.pageCount }));
+  }, 700);
 }
 
 function onLocale(event: Event) {
   store.setLocale((event.target as HTMLSelectElement).value as Locale);
+  showToast(t('toast.locale'));
 }
 
 function onDateFormat(event: Event) {

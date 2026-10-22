@@ -10,4 +10,4 @@ export function useI18n() {
 }
 
 export { translate };
-export { detectLocale } from './locale';
+export { DEFAULT_LOCALE, parseLocaleParam, localeFromSearch, resolveInitialLocale } from './locale';

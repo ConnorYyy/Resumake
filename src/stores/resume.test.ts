@@ -18,12 +18,12 @@ describe('首次访问的默认内容', () => {
     expect(store.doc.meta.paperSize).toBe('Letter');
   });
 
-  it('中文浏览器得到中文示例与 A4', () => {
+  it('中文浏览器在地址没有参数时也得到英文示例与 Letter', () => {
     stubBrowserLanguages(['zh-CN', 'zh']);
     setActivePinia(createPinia());
     const store = useResumeStore();
-    expect(store.doc.meta.locale).toBe('zh-CN');
-    expect(store.doc.meta.paperSize).toBe('A4');
+    expect(store.doc.meta.locale).toBe('en-US');
+    expect(store.doc.meta.paperSize).toBe('Letter');
   });
 });
 
@@ -42,6 +42,7 @@ describe('编辑器设置', () => {
     stubBrowserLanguages(['zh-CN']);
     setActivePinia(createPinia());
     const store = useResumeStore();
+    store.setLocale('zh-CN');
     store.setSectionTitle('experience', '工作履历');
     expect(store.doc.meta.sectionTitles['zh-CN']?.experience).toBe('工作履历');
     expect(store.doc.meta.sectionTitles['en-US']).toBeUndefined();

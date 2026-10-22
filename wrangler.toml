@@ -15,3 +15,11 @@ directory = "./dist"
 binding = "ASSETS"
 # 未匹配到文件时返回 dist/404.html（而不是空白响应）
 not_found_handling = "404-page"
+
+# AI 优化的限流（按 IP，每分钟 12 次）。
+# 简历通常有 15–20 条要点，6 次/分钟不够用。
+# 本地开发没有这个绑定，worker/ai.ts 会自动退回到进程内计数。
+[[ratelimits]]
+name = "AI_RATE_LIMITER"
+namespace_id = "1001"
+simple = { limit = 12, period = 60 }
