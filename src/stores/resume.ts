@@ -34,8 +34,38 @@ export type EditorMode = 'form' | 'code';
 export type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 
 /** 只保留“展示相关”的设置，用于填入示例/清空内容时延续用户的偏好 */
-function presentationMeta(meta: ResumeMeta): Partial<ResumeMeta> {
-  return {
+/**
+ * 保存的文档是否仍是内置示例（用户从未改过内容）。
+ *
+ * 忽略条目 id、照片、空字符串字段与时间戳：
+ * 校验器会把缺省字段补成空字符串，直接比较 JSON 会误判为「已修改」。
+ */
+export function isUntouchedSample(doc: ResumeDoc): boolean {
+  const pick = (value: Record<string, unknown>): Record<string, unknown> => {
+    const out: Record<string, unknown> = {};
+    for (const key of Object.keys(value).sort()) {
+      const field = value[key];
+      if (field === '' || field === undefined || field === null) continue;
+      if (key === 'id' || key === 'avatar' || key === 'avatarAlign') continue;
+      out[key] = field;
+    }
+    return out;
+  };
+
+  const sections = (value: ResumeDoc) => ({
+    profile: pick(value.profile),
+    education: value.education.map(pick),
+    experience: value.experience.map(pick),
+    projects: value.projects.map(pick),
+    skills: value.skills.map(pick),
+    certificates: value.certificates.map(pick),
+    customSections: value.customSections.map(pick),
+  });
+
+  return JSON.stringify(sections(doc)) === JSON.stringify(sections(createSample(doc.meta.locale)));
+}
+
+function presentationMeta(meta: ResumeMeta): Partial<ResumeMeta> {  return {
     templateId: meta.templateId,
     paperSize: meta.paperSize,
     margin: meta.margin,
@@ -155,7 +185,18 @@ export const useResumeStore = defineStore('resume', () => {
       const saved = await dbGet<unknown>(STORAGE_KEY);
       if (saved) {
         const result = validateResumeFile(saved);
-        if (result.ok) doc.value = result.doc;
+        if (result.ok) {
+          // 用户从未改动过内容（还是内置示例）时，按当前入口语言换成对应示例，
+          // 避免「从英文站进来却看到中文示例」。改过内容则原样保留。
+          if (result.doc.meta.locale !== initialLocale && isUntouchedSample(result.doc)) {
+            const { locale: _ignored, ...presentation } = presentationMeta(result.doc.meta);
+            const sample = createSample(initialLocale);
+            sample.meta = { ...sample.meta, ...presentation };
+            doc.value = sample;
+          } else {
+            doc.value = result.doc;
+          }
+        }
       }
     } catch (err) {
       /* 读取失败时使用示例数据 */

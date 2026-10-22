@@ -1,7 +1,8 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { nextTick } from 'vue';
 import { createPinia, setActivePinia } from 'pinia';
-import { useResumeStore } from './resume';
+import { isUntouchedSample, useResumeStore } from './resume';
+import { createSample } from '../data/sample';
 
 function stubBrowserLanguages(languages: string[]) {
   vi.stubGlobal('navigator', { languages, language: languages[0] });
@@ -27,8 +28,26 @@ describe('首次访问的默认内容', () => {
   });
 });
 
-describe('编辑器设置', () => {
-  it('切换语言时把不适用的日期格式回落到默认值', () => {
+describe('isUntouchedSample', () => {
+  it('内置示例判定为未改动', () => {
+    expect(isUntouchedSample(createSample('zh-CN'))).toBe(true);
+    expect(isUntouchedSample(createSample('en-US'))).toBe(true);
+  });
+
+  it('改过内容后不再是示例', () => {
+    const doc = createSample('zh-CN');
+    doc.profile.name = '张三';
+    expect(isUntouchedSample(doc)).toBe(false);
+  });
+
+  it('只改条目 id 仍视为未改动', () => {
+    const doc = createSample('en-US');
+    doc.experience[0].id = 'changed-id';
+    expect(isUntouchedSample(doc)).toBe(true);
+  });
+});
+
+describe('编辑器设置', () => {  it('切换语言时把不适用的日期格式回落到默认值', () => {
     stubBrowserLanguages(['en-US']);
     setActivePinia(createPinia());
     const store = useResumeStore();

@@ -140,11 +140,11 @@ onBeforeUnmount(() => {
       <div class="modal" role="dialog" aria-modal="true" aria-labelledby="print-title">
         <h2 id="print-title">{{ t('print.title') }}</h2>
         <ul>
+          <li class="tip-strong">{{ t('print.header') }}</li>
           <li>{{ t('print.paper', { paper: store.doc.meta.paperSize }) }}</li>
           <li>{{ t('print.margin') }}</li>
           <li>{{ t('print.target') }}</li>
           <li>{{ t('print.background') }}</li>
-          <li>{{ t('print.header') }}</li>
           <li>{{ t('print.links') }}</li>
           <li>{{ t('print.pages') }}</li>
         </ul>
@@ -290,6 +290,17 @@ onBeforeUnmount(() => {
   font-size: 14px;
   color: #424245;
   line-height: 1.8;
+}
+
+/* 最容易被忽略、但直接影响导出结果的一条 */
+.modal ul .tip-strong {
+  margin: 0 0 8px -6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #fff7e6;
+  color: #8a4b00;
+  font-weight: 600;
+  list-style: none;
 }
 
 .modal-actions {
