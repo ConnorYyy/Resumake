@@ -150,18 +150,18 @@
           </div>
           <div class="answers">
             <article class="answer">
-              <h3>Three things matter: text layer, headings and layout.</h3>
+              <h3>What are the 3 things that make a PDF ATS-friendly?</h3>
               <p>
-                The PDF must contain real text rather than an image of text. The section headings must use conventional
-                names such as Experience and Education. The layout should avoid multi-column tables and decorative
-                graphics that scramble reading order.
+                It is 3 things: a real text layer instead of an image of text, conventional section headings such as
+                Experience and Education, and a single-column layout without tables or decorative graphics that scramble
+                reading order.
               </p>
             </article>
             <article class="answer">
               <h3>How does Resumake create the PDF?</h3>
               <p>
-                It uses your browser's print engine to render the resume page into a PDF. The output contains real text
-                and clickable links, not a screenshot.
+                It is generated locally by your browser's print engine: 1 file, no server-side converter, and no step
+                where text could be flattened into an image. The output keeps a real text layer and clickable links.
               </p>
               <p>
                 Because the PDF is generated locally, there is no server-side converter that might flatten text into
@@ -176,22 +176,23 @@
             <article class="answer">
               <h3>Is it guaranteed to pass every ATS?</h3>
               <p>
-                No builder can guarantee that, because every ATS scores differently. What Resumake removes is the most
-                common technical failure: PDFs that are images and contain no readable text.
+                It is not guaranteed: every ATS scores differently, and 1 image-based PDF fails all of them. What
+                Resumake removes is the most common technical failure — a file with no extractable text.
               </p>
             </article>
             <article class="answer">
               <h3>What should I avoid in the content?</h3>
               <p>
-                Avoid icons in place of labels, contact details inside page headers or footers, and text inside images.
-                Keep job titles and dates on one line each, and use the standard section names the system expects.
+                It is 3 things: icons in place of labels, contact details inside page headers or footers, and text baked
+                into images. Keep job titles and dates on one line each, and use the standard section names the system
+                expects.
               </p>
             </article>
             <article class="answer">
               <h3>Should I include a photo?</h3>
               <p>
-                It depends on the market. ATS software ignores images, but in the US and UK photos are often
-                discouraged, while they are common in parts of Europe and Asia. Resumake makes the photo optional.
+                It depends on the market: in the US and UK 1 photo is often discouraged, while parts of Europe and Asia
+                commonly expect one. ATS software ignores photos entirely, so a photo never affects parsing.
               </p>
             </article>
           </div>
