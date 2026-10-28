@@ -70,7 +70,7 @@
         text-align: center;
       }
       #app > h1 {
-        margin: 34vh 24px 12px;
+        margin: 12vh 24px 12px;
         font-size: 18px;
         font-weight: 600;
         line-height: 1.4;
@@ -90,15 +90,42 @@
         line-height: 1.6;
         color: #6e6e73;
       }
+      #app > ul {
+        margin: 8px auto 18px;
+        max-width: 620px;
+        padding: 0 24px 0 44px;
+        font-size: 14px;
+        line-height: 1.7;
+        color: #6e6e73;
+        text-align: left;
+      }
+      #app > ul a {
+        color: #1d1d1f;
+      }
     </style>
     <div id="app">
       <h1>Free resume editor — no sign-up, no paywall</h1>
       <p>Three templates, live A4 and Letter preview, ATS-friendly PDF export. Your data stays in this browser.</p>
       <h2>What you can do here</h2>
       <p>
-        Choose a template, fill in your details, adjust margins and font scale, then export a PDF with selectable text.
-        If the editor does not appear, enable JavaScript in your browser.
+        Choose one of 3 templates, fill in your details, adjust margins between 10 mm and 20 mm and the font scale
+        between 80% and 120%, then export a PDF with selectable text. If the editor does not appear, enable JavaScript
+        in your browser.
       </p>
+      <h2>How it works</h2>
+      <ul>
+        <li>Pick a template — Classic, Modern or Minimal. You can switch at any time without losing content.</li>
+        <li>Type the content. Auto-save writes to this browser as you go, and undo/redo covers the last edits.</li>
+        <li>Export with your browser's print dialog: real text, clickable links, A4 or Letter, no watermark.</li>
+      </ul>
+      <h2>Guides</h2>
+      <ul>
+        <li><a href="/ats-friendly-resume-builder/">What makes a PDF readable by ATS software</a></li>
+        <li><a href="/private-resume-builder/">Where your resume is stored, and what is never uploaded</a></li>
+        <li><a href="/resume-builder-no-sign-up/">Why there is no account and no email address</a></li>
+        <li><a href="/free-resume-builder-no-watermark/">What "free" includes, and where the limits are</a></li>
+        <li><a href="/templates/">Classic, Modern and Minimal — which one to pick</a></li>
+      </ul>
     </div>
     <script type="module" src="/src/main.ts"></script>
 

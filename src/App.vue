@@ -134,6 +134,12 @@ onBeforeUnmount(() => {
       <span>{{ saveText }}</span>
       <span>{{ t('status.pages', { n: store.pageCount }) }}</span>
       <span v-if="store.cssWarnings.length" class="warn">{{ t('status.cssWarnings', { n: store.cssWarnings.length }) }}</span>
+      <span class="foot-links">
+        <a href="/templates/">Templates</a>
+        <a href="/ats-friendly-resume-builder/">ATS guide</a>
+        <a href="/private-resume-builder/">Privacy</a>
+        <a href="/zh/">中文</a>
+      </span>
     </footer>
 
     <div v-if="showPrintDialog" class="modal-mask" @click.self="showPrintDialog = false">
@@ -259,6 +265,29 @@ onBeforeUnmount(() => {
 
 .statusbar .warn {
   color: #b45309;
+}
+
+/* 页脚静态链接：给爬虫一条从编辑器走回内容页的路径，同时在窄屏隐藏避免拥挤 */
+.foot-links {
+  display: flex;
+  gap: 14px;
+  margin-left: auto;
+}
+
+.foot-links a {
+  color: #6e6e73;
+  text-decoration: none;
+}
+
+.foot-links a:hover {
+  color: #1d1d1f;
+  text-decoration: underline;
+}
+
+@media (max-width: 880px) {
+  .foot-links {
+    display: none;
+  }
 }
 
 .modal-mask {

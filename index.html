@@ -96,7 +96,7 @@
             "name": "Is Resumake free to use?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Every template and unlimited PDF exports cost $0. There is no trial that expires and no paywall at download. Supporting the project with Buy Me a Coffee is optional and unlocks nothing."
+              "text": "Yes. All 3 templates and unlimited PDF exports cost $0, with no trial that expires and no paywall at download. Tipping via Buy Me a Coffee is optional and unlocks nothing — there is no paid tier, so no feature is held back."
             }
           },
           {
@@ -112,7 +112,7 @@
             "name": "Is my resume data uploaded to a server?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Not by default. Resume content, photos and settings stay in your browser storage, and there is no resume database on the server. The editor has an optional AI improve button: pressing it sends only the sentence you are editing to an AI service and returns a rewrite — nothing else from your resume, and the result is not stored."
+              "text": "No. Your resume, photo and settings are stored in this browser only (IndexedDB), and the server has no database of resumes. The optional AI improve button is the single exception: pressing it sends only the field you are editing, capped at 600 characters, and the result is not stored."
             }
           },
           {
@@ -120,7 +120,7 @@
             "name": "How does the AI improve button work?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "It sends the text you are editing to an AI model and shows a rewritten version you can accept or discard. Only that text is sent — never your photo, contact details or other sections. The model runs with zero data retention and the result is not saved on any server."
+              "text": "It rewrites the field you are currently editing — at most 600 characters — and shows a suggestion you can accept or discard. Your photo, contact details and other sections are never sent, the model runs with zero data retention, and nothing is saved on a server. A rewrite usually takes 3 to 5 seconds."
             }
           },
           {
@@ -128,7 +128,7 @@
             "name": "Can I export my resume as a PDF with selectable text?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Export opens your browser's print dialog, so the PDF is made of real text rather than an image. Text stays selectable, links stay clickable and applicant tracking systems can parse it."
+              "text": "Yes. Export opens your browser print dialog and produces a PDF with a real text layer, so text stays selectable, links stay clickable and ATS software can read it. Paper is A4 or Letter, margins are 10, 15 or 20 mm, and the font scale runs from 80% to 120%."
             }
           },
           {
@@ -136,7 +136,7 @@
             "name": "Do you collect any data?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Two things, and neither identifies you. (1) Anonymous crash reports — the error type and a stack trace — used to fix bugs; they never include your resume content, photos or personal details. (2) Anonymous counters: page views via Cloudflare Web Analytics, plus how often the editor is opened or a PDF is exported. No cookies, no identifiers, and these counters never include your resume content."
+              "text": "Three things, and none identifies you. (1) Anonymous crash reports — the error type and a stack trace — used to fix bugs; they never include your resume content, photos or personal details. (2) Anonymous counters: page views via Cloudflare Web Analytics, plus how often the editor is opened or a PDF is exported. (3) The AI endpoint counts requests per IP per minute to enforce its rate limit, and stores no prompt text."
             }
           },
           {
@@ -144,7 +144,7 @@
             "name": "Does Resumake add a watermark to the PDF?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. The exported PDF contains only your resume. There is no watermark, no logo and no footer added by Resumake, and no download counter."
+              "text": "No. The PDF contains only your resume — no watermark, no Resumake logo and no added footer. Exports are unlimited, and nothing is stamped on the file to mark it as free-tier output."
             }
           },
           {
@@ -184,7 +184,7 @@
             "name": "What happens if I clear my browser data?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Your draft is stored in this browser, so clearing site data removes it. Use Save backup in the editor to download a JSON file you can restore later or on another device."
+              "text": "The draft disappears, because it lives in this browser and nowhere else. Use Save backup in the editor to download a single JSON file containing the resume and its settings; Import restores all of it on any device."
             }
           }
         ]
@@ -482,92 +482,51 @@
           <div class="faq">
             <details>
               <summary>Is Resumake free to use?</summary>
-              <p>
-                Yes. Every template and unlimited PDF exports cost $0. There is no trial that expires and no paywall at
-                download. Supporting the project with Buy Me a Coffee is optional and unlocks nothing.
-              </p>
+              <p>Yes. All 3 templates and unlimited PDF exports cost $0, with no trial that expires and no paywall at download. Tipping via Buy Me a Coffee is optional and unlocks nothing — there is no paid tier, so no feature is held back.</p>
             </details>
             <details>
               <summary>Do I need to create an account?</summary>
-              <p>
-                No. There is no account, no email and no password. Open the editor and start typing; your draft is
-                saved automatically in your browser.
-              </p>
+              <p>No. There is no account, no email and no password. Open the editor and start typing; your draft is saved automatically in your browser.</p>
             </details>
             <details>
               <summary>Is my resume data uploaded to a server?</summary>
-              <p>
-                Not by default. Resume content, photos and settings stay in your browser storage, and there is no
-                resume database on the server. The editor has an optional AI improve button: pressing it sends only the
-                sentence you are editing to an AI service and returns a rewrite — nothing else from your resume, and the
-                result is not stored.
-              </p>
+              <p>No. Your resume, photo and settings are stored in this browser only (IndexedDB), and the server has no database of resumes. The optional AI improve button is the single exception: pressing it sends only the field you are editing, capped at 600 characters, and the result is not stored.</p>
             </details>
             <details>
               <summary>How does the AI improve button work?</summary>
-              <p>
-                It sends the text you are editing to an AI model and shows a rewritten version you can accept or
-                discard. Only that text is sent — never your photo, contact details or other sections. The model runs
-                with zero data retention and the result is not saved on any server.
-              </p>
+              <p>It rewrites the field you are currently editing — at most 600 characters — and shows a suggestion you can accept or discard. Your photo, contact details and other sections are never sent, the model runs with zero data retention, and nothing is saved on a server. A rewrite usually takes 3 to 5 seconds.</p>
             </details>
             <details>
               <summary>Can I export my resume as a PDF with selectable text?</summary>
-              <p>
-                Yes. Export opens your browser's print dialog, so the PDF is made of real text rather than an image.
-                Text stays selectable, links stay clickable and applicant tracking systems can parse it.
-              </p>
+              <p>Yes. Export opens your browser print dialog and produces a PDF with a real text layer, so text stays selectable, links stay clickable and ATS software can read it. Paper is A4 or Letter, margins are 10, 15 or 20 mm, and the font scale runs from 80% to 120%.</p>
             </details>
             <details>
               <summary>Do you collect any data?</summary>
-              <p>
-                Two things, and neither identifies you. (1) Anonymous crash reports — the error type and a stack trace —
-                used to fix bugs; they never include your resume content, photos or personal details. (2) Anonymous
-                counters: page views via Cloudflare Web Analytics, plus how often the editor is opened or a PDF is
-                exported. No cookies, no identifiers, and these counters never include your resume content.
-              </p>
+              <p>Three things, and none identifies you. (1) Anonymous crash reports — the error type and a stack trace — used to fix bugs; they never include your resume content, photos or personal details. (2) Anonymous counters: page views via Cloudflare Web Analytics, plus how often the editor is opened or a PDF is exported. (3) The AI endpoint counts requests per IP per minute to enforce its rate limit, and stores no prompt text.</p>
             </details>
             <details>
               <summary>Does Resumake add a watermark to the PDF?</summary>
-              <p>
-                No. The exported PDF contains only your resume. There is no watermark, no logo and no footer added by
-                Resumake, and no download counter.
-              </p>
+              <p>No. The PDF contains only your resume — no watermark, no Resumake logo and no added footer. Exports are unlimited, and nothing is stamped on the file to mark it as free-tier output.</p>
             </details>
             <details>
               <summary>Do I need an email address to use it?</summary>
-              <p>
-                No. Resumake never asks for an email address, does not send verification links and has no password to
-                reset. Nothing is sent to your inbox.
-              </p>
+              <p>No. Resumake never asks for an email address, does not send verification links and has no password to reset. Nothing is sent to your inbox.</p>
             </details>
             <details>
               <summary>Can I switch templates after I start?</summary>
-              <p>
-                Yes. Switch between Classic, Modern and Minimal at any time. Your content stays the same and the layout
-                is re-rendered instantly.
-              </p>
+              <p>Yes. Switch between Classic, Modern and Minimal at any time. Your content stays the same and the layout is re-rendered instantly.</p>
             </details>
             <details>
               <summary>Does it work on a phone or tablet?</summary>
-              <p>
-                It works in modern desktop and tablet browsers. On a phone the editor opens, but the split
-                form-and-preview layout is cramped; a desktop or tablet is the better experience.
-              </p>
+              <p>It works in modern desktop and tablet browsers. On a phone the editor opens, but the split form-and-preview layout is cramped; a desktop or tablet is the better experience.</p>
             </details>
             <details>
               <summary>Can I export to Word or DOCX?</summary>
-              <p>
-                No. Resumake exports PDF only, because PDF preserves the exact layout recruiters and applicant tracking
-                systems expect.
-              </p>
+              <p>No. Resumake exports PDF only, because PDF preserves the exact layout recruiters and applicant tracking systems expect.</p>
             </details>
             <details>
               <summary>What happens if I clear my browser data?</summary>
-              <p>
-                Your draft is stored in this browser, so clearing site data removes it. Use Save backup in the editor to
-                download a JSON file you can restore later or on another device.
-              </p>
+              <p>The draft disappears, because it lives in this browser and nowhere else. Use Save backup in the editor to download a single JSON file containing the resume and its settings; Import restores all of it on any device.</p>
             </details>
           </div>
         </div>
@@ -586,7 +545,7 @@
             </article>
             <article class="card">
               <h3><a href="/resume-builder-no-sign-up/">No sign-up, no email</a></h3>
-              <p>What "no account" really means, and what you give up in exchange.</p>
+              <p>What "no account" really means, how recovery works, and what you give up.</p>
             </article>
             <article class="card">
               <h3><a href="/free-resume-builder-no-watermark/">Free, with no watermark</a></h3>
@@ -599,10 +558,6 @@
             <article class="card">
               <h3><a href="/templates/">Compare the templates</a></h3>
               <p>Classic, Modern and Minimal — which one fits which role.</p>
-            </article>
-            <article class="card">
-              <h3><a href="/resume-builder-without-email/">Without an email address</a></h3>
-              <p>How saving and recovery work when there is no inbox involved.</p>
             </article>
           </div>
         </div>

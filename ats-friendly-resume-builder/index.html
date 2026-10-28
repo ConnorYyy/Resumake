@@ -45,7 +45,7 @@
             "name": "What makes a PDF ATS-friendly?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Three things: the PDF must contain a real text layer rather than an image of text, the section headings must use conventional names such as Experience and Education, and the layout should avoid multi-column tables and decorative graphics."
+              "text": "Three things: a real text layer instead of an image of text, conventional section headings such as Experience, Education and Skills, and a single-column layout without tables, icons or decorative graphics. All 3 Resumake templates use one column and those standard headings."
             }
           },
           {
@@ -53,7 +53,7 @@
             "name": "How does Resumake create the PDF?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "It uses your browser's print engine to render the resume page into a PDF. The output contains real text and clickable links, not a screenshot."
+              "text": "Your browser own print engine renders the page, so the file is produced locally — there is no server-side converter that could flatten text into an image. The result is a PDF with a selectable text layer, clickable links, A4 or Letter paper, and margins from 10 mm to 20 mm."
             }
           },
           {
@@ -61,7 +61,7 @@
             "name": "Is it guaranteed to pass every ATS?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No builder can guarantee that, because every ATS scores differently. What Resumake removes is the most common technical failure: PDFs that are images and contain no readable text."
+              "text": "No builder can guarantee that, because every ATS scores differently and some reject anything unfamiliar. What Resumake removes is the most common technical failure: a PDF that is only an image and contains no extractable text."
             }
           },
           {
@@ -69,7 +69,7 @@
             "name": "How can I check my own PDF?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Open the PDF and try to select and copy a line of text. If the text can be selected, an ATS can usually extract it too. If the whole page selects as one image, it cannot."
+              "text": "Open the exported PDF and try to select and copy one line. If the text highlights, an ATS can usually extract it too. If the whole page selects as a single image, it cannot."
             }
           },
           {
@@ -77,7 +77,7 @@
             "name": "Should I include a photo?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "It depends on the market. ATS software ignores images, but in the US and UK photos are often discouraged, while they are common in parts of Europe and Asia. Resumake makes the photo optional."
+              "text": "It depends on the market. ATS software ignores photos entirely, so a photo never affects parsing; in the US and UK it is often discouraged, while it is common in parts of Europe and Asia. Resumake makes the photo optional and crops it to a 3:4 ID ratio."
             }
           },
           {
@@ -85,10 +85,29 @@
             "name": "Can I change margins for a one-page fit?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Margins can be set from narrow to wide, and page breaks are marked in the preview so you can see where the PDF will split."
+              "text": "Yes. There are 3 margin presets — 10 mm, 15 mm and 20 mm — plus a font scale from 80% to 120% in 5% steps. Page breaks are marked in the preview, so you can see exactly where the PDF will split."
             }
           }
         ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "An ATS-friendly resume builder that exports real text",
+        "description": "Why a text-based PDF parses better than an image, which layout rules matter, and how to check your own file.",
+        "inLanguage": "en",
+        "author": { "@type": "Organization", "name": "Resumake", "url": "%SITE_URL%/" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Resumake",
+          "logo": { "@type": "ImageObject", "url": "%SITE_URL%/logo.svg" }
+        },
+        "datePublished": "2026-10-21",
+        "dateModified": "2026-10-28",
+        "image": "%SITE_URL%/og/og-ats.jpg",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "%SITE_URL%/ats-friendly-resume-builder/" }
       }
     </script>
   </head>
@@ -255,46 +274,27 @@
           <div class="faq">
             <details>
               <summary>What makes a PDF ATS-friendly?</summary>
-              <p>
-                Three things: the PDF must contain a real text layer rather than an image of text, the section headings
-                must use conventional names such as Experience and Education, and the layout should avoid multi-column
-                tables and decorative graphics.
-              </p>
+              <p>Three things: a real text layer instead of an image of text, conventional section headings such as Experience, Education and Skills, and a single-column layout without tables, icons or decorative graphics. All 3 Resumake templates use one column and those standard headings.</p>
             </details>
             <details>
               <summary>How does Resumake create the PDF?</summary>
-              <p>
-                It uses your browser's print engine to render the resume page into a PDF. The output contains real text
-                and clickable links, not a screenshot.
-              </p>
+              <p>Your browser own print engine renders the page, so the file is produced locally — there is no server-side converter that could flatten text into an image. The result is a PDF with a selectable text layer, clickable links, A4 or Letter paper, and margins from 10 mm to 20 mm.</p>
             </details>
             <details>
               <summary>Is it guaranteed to pass every ATS?</summary>
-              <p>
-                No builder can guarantee that, because every ATS scores differently. What Resumake removes is the most
-                common technical failure: PDFs that are images and contain no readable text.
-              </p>
+              <p>No builder can guarantee that, because every ATS scores differently and some reject anything unfamiliar. What Resumake removes is the most common technical failure: a PDF that is only an image and contains no extractable text.</p>
             </details>
             <details>
               <summary>How can I check my own PDF?</summary>
-              <p>
-                Open the PDF and try to select and copy a line of text. If the text can be selected, an ATS can usually
-                extract it too. If the whole page selects as one image, it cannot.
-              </p>
+              <p>Open the exported PDF and try to select and copy one line. If the text highlights, an ATS can usually extract it too. If the whole page selects as a single image, it cannot.</p>
             </details>
             <details>
               <summary>Should I include a photo?</summary>
-              <p>
-                It depends on the market. ATS software ignores images, but in the US and UK photos are often
-                discouraged, while they are common in parts of Europe and Asia. Resumake makes the photo optional.
-              </p>
+              <p>It depends on the market. ATS software ignores photos entirely, so a photo never affects parsing; in the US and UK it is often discouraged, while it is common in parts of Europe and Asia. Resumake makes the photo optional and crops it to a 3:4 ID ratio.</p>
             </details>
             <details>
               <summary>Can I change margins for a one-page fit?</summary>
-              <p>
-                Yes. Margins can be set from narrow to wide, and page breaks are marked in the preview so you can see
-                where the PDF will split.
-              </p>
+              <p>Yes. There are 3 margin presets — 10 mm, 15 mm and 20 mm — plus a font scale from 80% to 120% in 5% steps. Page breaks are marked in the preview, so you can see exactly where the PDF will split.</p>
             </details>
           </div>
         </div>
@@ -317,7 +317,7 @@
           <a href="/resume-builder-no-sign-up/">No sign-up</a> ·
           <a href="/free-resume-builder-no-watermark/">No watermark</a> ·
           <a href="/templates/">Templates</a> ·
-          <a href="/resume-builder-without-email/">No email</a>
+          <a href="/resume-builder-no-sign-up/#no-email">No email</a>
         </span>
         <span><a href="/app/">Editor</a> · <a href="/zh/">中文版</a></span>
       </div>

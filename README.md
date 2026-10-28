@@ -6,6 +6,8 @@
 
 <p align="center">基于 HTML 模板的个人简历生成与 PDF 导出 Web 应用</p>
 
+<p align="center"><a href="https://resumake.online">https://resumake.online</a></p>
+
 ---
 
 ## 功能

@@ -70,7 +70,7 @@
             "name": "导出的 PDF 能被招聘系统读取吗？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "可以。Resumake 通过浏览器打印生成 PDF，文件由真实文字构成而不是截图，文字可以选中复制，ATS 也能解析其中的关键词。"
+              "text": "可以。Resumake 通过浏览器打印生成 PDF，文件由真实文字构成而不是截图，文字可以选中复制，ATS 也能解析其中的关键词。纸张可选 A4 或 Letter，边距 10–20 毫米，字号 80%–120%。"
             }
           },
           {
@@ -96,8 +96,43 @@
               "@type": "Answer",
               "text": "只保存在你自己的浏览器里。服务器上没有简历数据库，也不会上传照片。"
             }
+          },
+          {
+            "@type": "Question",
+            "name": "中文简历需要放照片和个人信息吗？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "看投递市场。国内简历放 3:4 证件照是常态，也常写年龄、籍贯等信息；投递美国或英国岗位时通常不放照片，也不写年龄、性别和婚姻状况。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "中文 PDF 复制出来会不会乱码？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "取决于字体有没有嵌入。Resumake 用浏览器打印导出，会嵌入字体；如果复制出来是方块，说明那份 PDF 用了图片或未嵌入的字体。"
+            }
           }
         ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "免费简历生成器怎么选：在线制作简历的完整说明",
+        "description": "在线简历生成器的挑选要点、常见「免费」陷阱，以及如何导出能被 ATS 读取的中文 PDF。",
+        "inLanguage": "zh-CN",
+        "author": { "@type": "Organization", "name": "Resumake", "url": "%SITE_URL%/" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Resumake",
+          "logo": { "@type": "ImageObject", "url": "%SITE_URL%/logo.svg" }
+        },
+        "datePublished": "2026-10-21",
+        "dateModified": "2026-10-28",
+        "image": "%SITE_URL%/og/og-zh-guide.jpg",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "%SITE_URL%/zh/jianli-shengchengqi/" }
       }
     </script>
   </head>
@@ -259,6 +294,63 @@
         </div>
       </section>
 
+      <section class="block" id="china">
+        <div class="container">
+          <div class="section-head">
+            <h2>中文简历和英文简历，写法不一样。</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <h3>照片：中文常放，英文通常不放。</h3>
+              <p>
+                国内简历放证件照是常态，比例建议 3:4；投递美国、英国岗位时通常不放照片，部分公司会因平等就业规定直接忽略照片区域。
+              </p>
+            </article>
+            <article class="answer">
+              <h3>个人信息：中文简历常写，英文简历要删。</h3>
+              <p>
+                年龄、性别、籍贯、婚姻状况、政治面貌在国内简历里很常见；英文简历一般不写这些，写了反而可能被招聘方认为不专业。
+              </p>
+            </article>
+            <article class="answer">
+              <h3>篇幅：一份简历一页就够。</h3>
+              <p>
+                工作 5 年以内建议压到一页，资深岗位最多两页。Resumake 的预览会标出分页位置，也可以用「压缩到一页」把内容收进单页。
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block alt" id="ats-zh">
+        <div class="container">
+          <div class="section-head">
+            <h2>中文 PDF 能被 ATS 读取吗？</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <h3>关键在字体是否嵌入，而不是语言。</h3>
+              <p>
+                ATS 读的是 PDF 里的文本层。中文只要字体被正确嵌入就能被提取；如果 PDF 是截图，或者字体没有嵌入，复制出来就会是方块或乱码。
+              </p>
+              <p>自检方法：打开导出的 PDF，复制一段中文粘贴到记事本。能正常显示，招聘系统通常也能读。</p>
+            </article>
+            <article class="answer">
+              <h3>三件容易踩的事。</h3>
+              <p>
+                不要用双栏表格排版，不要把经历写进图片，不要用艺术字或图标代替「工作经历」这类分节标题。Resumake 的三套模板都是单栏结构，分节标题使用标准名称。
+              </p>
+            </article>
+            <article class="answer">
+              <h3>模板怎么选？</h3>
+              <p>
+                银行、法律、国企优先「经典」；互联网、产品、设计选「现代」；学术、研究、外企选「极简」。三套模板都能随时切换，内容不会丢。
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="block" id="faq">
         <div class="container">
           <div class="section-head">
@@ -267,29 +359,19 @@
           <div class="faq">
             <details>
               <summary>在线简历生成器是什么？</summary>
-              <p>
-                在线简历生成器是在浏览器里填写信息、实时预览排版，并导出 PDF 的工具。好的工具应该让你不用安装软件、不用注册账号，就能直接拿到可投递的简历文件。
-              </p>
+              <p>在线简历生成器是在浏览器里填写信息、实时预览排版，并导出 PDF 的工具。好的工具应该让你不用安装软件、不用注册账号，就能直接拿到可投递的简历文件。</p>
             </details>
             <details>
               <summary>标着「免费」的简历工具，常见陷阱有哪些？</summary>
-              <p>
-                三种最常见：一是可以免费填写，但下载 PDF 时才要求付费或开会员；二是免费版给 PDF 加水印；三是免费试用 7
-                天后自动扣费。判断方法很简单——看它是否要求先绑定银行卡。
-              </p>
+              <p>三种最常见：一是可以免费填写，但下载 PDF 时才要求付费或开会员；二是免费版给 PDF 加水印；三是免费试用 7 天后自动扣费。判断方法很简单——看它是否要求先绑定银行卡。</p>
             </details>
             <details>
               <summary>做简历需要注册账号吗？</summary>
-              <p>
-                不一定。Resumake 不需要账号、邮箱或密码，打开编辑器即可开始，草稿自动保存在当前浏览器里。
-              </p>
+              <p>不一定。Resumake 不需要账号、邮箱或密码，打开编辑器即可开始，草稿自动保存在当前浏览器里。</p>
             </details>
             <details>
               <summary>导出的 PDF 能被招聘系统读取吗？</summary>
-              <p>
-                可以。Resumake 通过浏览器打印生成 PDF，文件由真实文字构成而不是截图，文字可以选中复制，ATS
-                也能解析其中的关键词。
-              </p>
+              <p>可以。Resumake 通过浏览器打印生成 PDF，文件由真实文字构成而不是截图，文字可以选中复制，ATS 也能解析其中的关键词。纸张可选 A4 或 Letter，边距 10–20 毫米，字号 80%–120%。</p>
             </details>
             <details>
               <summary>手机上可以做简历吗？</summary>
@@ -297,13 +379,19 @@
             </details>
             <details>
               <summary>中文简历的分节标题可以改吗？</summary>
-              <p>
-                可以。中文和英文的简历分节标题都能自定义，比如把「工作经历」改成「实习经历」，改完立即在预览中生效。
-              </p>
+              <p>可以。中文和英文的简历分节标题都能自定义，比如把「工作经历」改成「实习经历」，改完立即在预览中生效。</p>
             </details>
             <details>
               <summary>数据会保存在哪里？</summary>
               <p>只保存在你自己的浏览器里。服务器上没有简历数据库，也不会上传照片。</p>
+            </details>
+            <details>
+              <summary>中文简历需要放照片和个人信息吗？</summary>
+              <p>看投递市场。国内简历放 3:4 证件照是常态，也常写年龄、籍贯等信息；投递美国或英国岗位时通常不放照片，也不写年龄、性别和婚姻状况。</p>
+            </details>
+            <details>
+              <summary>中文 PDF 复制出来会不会乱码？</summary>
+              <p>取决于字体有没有嵌入。Resumake 用浏览器打印导出，会嵌入字体；如果复制出来是方块，说明那份 PDF 用了图片或未嵌入的字体。</p>
             </details>
           </div>
         </div>

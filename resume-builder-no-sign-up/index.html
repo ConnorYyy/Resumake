@@ -6,7 +6,7 @@
     <title>Resume Builder With No Sign-Up or Email | Resumake</title>
     <meta
       name="description"
-      content="A resume builder with no sign-up, no email and no password. Open the editor and type — no verification link, no trial, no account to remember."
+      content="A resume builder with no sign-up and no email address. No password, no verification link, no trial — open the editor, type, and export a free PDF."
     />
     <meta name="robots" content="index,follow" />
     <meta name="google-site-verification" content="R4qJpITjCfoNZSlde8Nvbo_bxU8YLDkUfrFbyDbGq9Y" />
@@ -38,6 +38,24 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Resume builder with no sign-up or email",
+        "description": "How a no-account resume builder works: where the draft is saved, how recovery works without an email address, and what you give up.",
+        "inLanguage": "en",
+        "author": { "@type": "Organization", "name": "Resumake", "url": "%SITE_URL%/" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Resumake",
+          "logo": { "@type": "ImageObject", "url": "%SITE_URL%/logo.svg" }
+        },
+        "datePublished": "2026-10-21",
+        "dateModified": "2026-10-28",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "%SITE_URL%/resume-builder-no-sign-up/" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           {
@@ -45,7 +63,7 @@
             "name": "Do I have to create an account?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. There is no account, no email and no password. Click Open editor and start typing immediately."
+              "text": "No. There is no account, no email and no password. Click Open editor and the sample resume is already loaded, so you can start typing in one click."
             }
           },
           {
@@ -53,7 +71,15 @@
             "name": "Do I need an email address?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Resumake never asks for an email, sends no verification link and has no password to reset."
+              "text": "No. Resumake never asks for an email and there is no email field in the editor, so no verification link is sent and no password reset exists."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will I get marketing emails or a newsletter?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. There is no mailing list to join, because no address is ever collected. The site cannot email you at all."
             }
           },
           {
@@ -61,7 +87,7 @@
             "name": "Is there a trial, a credit card or a hidden step?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. There is no trial, no card and no upsell step. Templates and PDF export are free and unlimited."
+              "text": "No. There is no trial, no card and no upsell step. All 3 templates and unlimited PDF exports are free, and the download button is never locked."
             }
           },
           {
@@ -69,7 +95,15 @@
             "name": "Where is my resume saved if I do not have an account?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "In your browser's local storage for resumake.online. Reopening the editor in the same browser restores your draft automatically."
+              "text": "In your browser's own storage for resumake.online. Reopening the editor in the same browser restores the draft automatically; auto-save runs as you type."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I move my resume to another device without logging in?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "With the backup file. Save backup downloads a JSON file containing the resume and its settings, and Import restores it on any other browser or computer."
             }
           },
           {
@@ -77,7 +111,7 @@
             "name": "What do I give up by not having an account?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Cross-device sync and password-based recovery. You move between devices with a backup JSON file instead of a login."
+              "text": "Cross-device sync and password-based recovery. The backup JSON file replaces both, and in exchange no company holds a copy of your CV."
             }
           },
           {
@@ -85,7 +119,15 @@
             "name": "Can I still export a PDF?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Export is free, unlimited and watermark-free, and it does not require a login."
+              "text": "Yes. Export is free, unlimited and watermark-free: A4 or Letter, 3 templates, margins from 10 mm to 20 mm, and real text that ATS software can read."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use it if I do not have an email address at all?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Nothing in the editor, the export step or the backup and restore flow requires an email address."
             }
           }
         ]
@@ -112,10 +154,10 @@
     <main>
       <section class="hero">
         <div class="container">
-          <h1>A resume builder with no sign-up. Just open it and type.</h1>
+          <h1>A resume builder with no sign-up and no email. Just open it and type.</h1>
           <p class="lead">
-            No account, no email, no password, no verification link. The editor loads and your draft is saved in your
-            browser as you go.
+            No account, no email address, no password and no verification link. The editor loads with a sample resume
+            already in place, auto-saves to this browser as you type, and exports a free PDF in one of 3 templates.
           </p>
           <div class="actions">
             <a class="btn" href="/app/">Start without an account</a>
@@ -132,35 +174,59 @@
           <div class="answers">
             <article class="answer">
               <h3>Do I have to create an account?</h3>
-              <p>No. There is no account, no email and no password. Click Open editor and start typing immediately.</p>
+              <p>
+                No. There is no account, no email and no password. Click Open editor and the sample resume is already
+                loaded, so you can start typing in one click.
+              </p>
             </article>
             <article class="answer">
               <h3>Do I need an email address?</h3>
               <p>
-                No. Resumake never asks for an email, sends no verification link and has no password to reset. Nothing
-                arrives in your inbox.
+                No. Resumake never asks for an email and there is no email field in the editor, so no verification link
+                is sent and no password reset exists.
               </p>
             </article>
             <article class="answer">
               <h3>Is there a trial, a credit card or a hidden step?</h3>
               <p>
-                No. There is no trial, no card and no upsell step. Templates and PDF export are free and unlimited, and
-                the download button is never locked.
+                No. There is no trial, no card and no upsell step. All 3 templates and unlimited PDF exports are free,
+                and the download button is never locked.
               </p>
             </article>
             <article class="answer">
               <h3>Where is my resume saved if I do not have an account?</h3>
               <p>
-                In your browser's local storage for resumake.online. Reopening the editor in the same browser restores
-                your draft automatically.
+                In your browser's own storage for resumake.online. Reopening the editor in the same browser restores the
+                draft automatically; auto-save runs as you type.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="no-email">
+        <div class="container">
+          <div class="section-head">
+            <h2>No email address, no verification link.</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <h3>Will I get marketing emails or a newsletter?</h3>
+              <p>
+                No. There is no mailing list to join, because no address is ever collected. The site cannot email you at
+                all.
               </p>
             </article>
             <article class="answer">
-              <h3>What do I give up by not having an account?</h3>
+              <h3>How do I move my resume to another device without logging in?</h3>
               <p>
-                Cross-device sync and password-based recovery. You move between devices with a backup JSON file instead
-                of a login.
+                With the backup file. Save backup downloads a JSON file containing the resume and its settings, and
+                Import restores it on any other browser or computer.
               </p>
+            </article>
+            <article class="answer">
+              <h3>Can I use it if I do not have an email address at all?</h3>
+              <p>Yes. Nothing in the editor, the export step or the backup and restore flow requires an email address.</p>
             </article>
           </div>
         </div>
@@ -184,8 +250,8 @@
               </p>
               <p>
                 For the privacy side of that trade-off, read
-                <a href="/private-resume-builder/">what stays in your browser</a>; for the mechanics of saving without a
-                login, see <a href="/resume-builder-without-email/">saving without an email</a>.
+                <a href="/private-resume-builder/">what stays in your browser</a>; for recovery without a login, see
+                <a href="#no-email">saving without an email address</a>.
               </p>
             </article>
             <article class="answer">
@@ -275,33 +341,65 @@
           <div class="faq">
             <details>
               <summary>Do I have to create an account?</summary>
-              <p>No. There is no account, no email and no password. Click Open editor and start typing immediately.</p>
+              <p>
+                No. There is no account, no email and no password. Click Open editor and the sample resume is already
+                loaded, so you can start typing in one click.
+              </p>
             </details>
             <details>
               <summary>Do I need an email address?</summary>
-              <p>No. Resumake never asks for an email, sends no verification link and has no password to reset.</p>
+              <p>
+                No. Resumake never asks for an email and there is no email field in the editor, so no verification link
+                is sent and no password reset exists.
+              </p>
+            </details>
+            <details>
+              <summary>Will I get marketing emails or a newsletter?</summary>
+              <p>
+                No. There is no mailing list to join, because no address is ever collected. The site cannot email you at
+                all.
+              </p>
             </details>
             <details>
               <summary>Is there a trial, a credit card or a hidden step?</summary>
-              <p>No. There is no trial, no card and no upsell step. Templates and PDF export are free and unlimited.</p>
+              <p>
+                No. There is no trial, no card and no upsell step. All 3 templates and unlimited PDF exports are free,
+                and the download button is never locked.
+              </p>
             </details>
             <details>
               <summary>Where is my resume saved if I do not have an account?</summary>
               <p>
-                In your browser's local storage for resumake.online. Reopening the editor in the same browser restores
-                your draft automatically.
+                In your browser's own storage for resumake.online. Reopening the editor in the same browser restores the
+                draft automatically; auto-save runs as you type.
+              </p>
+            </details>
+            <details>
+              <summary>How do I move my resume to another device without logging in?</summary>
+              <p>
+                With the backup file. Save backup downloads a JSON file containing the resume and its settings, and
+                Import restores it on any other browser or computer.
               </p>
             </details>
             <details>
               <summary>What do I give up by not having an account?</summary>
               <p>
-                Cross-device sync and password-based recovery. You move between devices with a backup JSON file instead
-                of a login.
+                Cross-device sync and password-based recovery. The backup JSON file replaces both, and in exchange no
+                company holds a copy of your CV.
               </p>
             </details>
             <details>
               <summary>Can I still export a PDF?</summary>
-              <p>Yes. Export is free, unlimited and watermark-free, and it does not require a login.</p>
+              <p>
+                Yes. Export is free, unlimited and watermark-free: A4 or Letter, 3 templates, margins from 10 mm to
+                20 mm, and real text that ATS software can read.
+              </p>
+            </details>
+            <details>
+              <summary>Can I use it if I do not have an email address at all?</summary>
+              <p>
+                Yes. Nothing in the editor, the export step or the backup and restore flow requires an email address.
+              </p>
             </details>
           </div>
         </div>
@@ -324,7 +422,7 @@
           <a href="/free-resume-builder-no-watermark/">No watermark</a> ·
           <a href="/ats-friendly-resume-builder/">ATS</a> ·
           <a href="/templates/">Templates</a> ·
-          <a href="/resume-builder-without-email/">No email</a>
+          <a href="#no-email">No email</a>
         </span>
         <span><a href="/app/">Editor</a> · <a href="/zh/">中文版</a></span>
       </div>

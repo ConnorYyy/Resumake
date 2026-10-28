@@ -20,16 +20,15 @@ const RELEASE = `resumake@${pkg.version}`;
  * 改动某个页面的正文后，记得同步改这里的日期。
  */
 const SITEMAP_PAGES = [
-  { loc: '/', priority: '1.0', localized: true, updated: '2026-10-21' },
-  { loc: '/zh/', priority: '0.9', localized: true, updated: '2026-10-21' },
-  { loc: '/app/', priority: '0.7', localized: false, updated: '2026-10-21' },
-  { loc: '/private-resume-builder/', priority: '0.8', localized: false, updated: '2026-10-21' },
-  { loc: '/resume-builder-no-sign-up/', priority: '0.8', localized: false, updated: '2026-10-21' },
-  { loc: '/free-resume-builder-no-watermark/', priority: '0.8', localized: false, updated: '2026-10-21' },
-  { loc: '/ats-friendly-resume-builder/', priority: '0.8', localized: false, updated: '2026-10-21' },
-  { loc: '/templates/', priority: '0.7', localized: false, updated: '2026-10-21' },
-  { loc: '/resume-builder-without-email/', priority: '0.7', localized: false, updated: '2026-10-21' },
-  { loc: '/zh/jianli-shengchengqi/', priority: '0.7', localized: false, updated: '2026-10-21' },
+  { loc: '/', priority: '1.0', localized: true, updated: '2026-10-28' },
+  { loc: '/zh/', priority: '0.9', localized: true, updated: '2026-10-28' },
+  { loc: '/app/', priority: '0.7', localized: false, updated: '2026-10-28' },
+  { loc: '/private-resume-builder/', priority: '0.8', localized: false, updated: '2026-10-28' },
+  { loc: '/resume-builder-no-sign-up/', priority: '0.8', localized: false, updated: '2026-10-28' },
+  { loc: '/free-resume-builder-no-watermark/', priority: '0.8', localized: false, updated: '2026-10-28' },
+  { loc: '/ats-friendly-resume-builder/', priority: '0.8', localized: false, updated: '2026-10-28' },
+  { loc: '/templates/', priority: '0.7', localized: false, updated: '2026-10-28' },
+  { loc: '/zh/jianli-shengchengqi/', priority: '0.7', localized: false, updated: '2026-10-28' },
 ];
 
 function buildSitemap(): string {
@@ -226,7 +225,6 @@ export default defineConfig(({ mode }) => {
           noWatermark: 'free-resume-builder-no-watermark/index.html',
           atsFriendly: 'ats-friendly-resume-builder/index.html',
           templates: 'templates/index.html',
-          withoutEmail: 'resume-builder-without-email/index.html',
           zhGenerator: 'zh/jianli-shengchengqi/index.html',
         },
       },

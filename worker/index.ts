@@ -22,6 +22,15 @@ const AI_STATUS_PATH = '/api/ai/status';
 /** 白名单事件名，避免接口被刷入垃圾数据 */
 const ALLOWED_EVENTS = new Set(['editor_open', 'export']);
 
+/**
+ * 已合并的页面 → 保留页。
+ * `resume-builder-without-email` 与 `resume-builder-no-sign-up` 是同一个搜索意图，
+ * 两页各 600 词互相稀释，合并成一篇更长的页面，旧地址永久重定向。
+ */
+const REDIRECTS: Record<string, string> = {
+  '/resume-builder-without-email/': '/resume-builder-no-sign-up/',
+};
+
 export interface Env extends AiEnv {
   ASSETS: { fetch(request: Request): Promise<Response> };
 }
@@ -29,6 +38,15 @@ export interface Env extends AiEnv {
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
+
+    // 合并后的旧地址：301 到保留页（保留查询串）
+    const normalized = url.pathname.endsWith('/') ? url.pathname : `${url.pathname}/`;
+    const target = REDIRECTS[normalized];
+    if (target) {
+      const to = new URL(target, url);
+      to.search = url.search;
+      return Response.redirect(to.toString(), 301);
+    }
 
     if (url.pathname === AI_STATUS_PATH && request.method === 'GET') {
       return handleAiStatus(env);
