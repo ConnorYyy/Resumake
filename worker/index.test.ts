@@ -38,6 +38,14 @@ describe('worker 路由', () => {
     expect(res.headers.get('location')).toBe('https://resumake.online/resume-builder-no-sign-up/?from=old');
   });
 
+  it('末尾带点或大写的旧地址也重定向', async () => {
+    const { env } = makeEnv();
+    const dotted = await worker.fetch(get('/resume-builder-without-email.'), env);
+    expect(dotted.status).toBe(301);
+    const upper = await worker.fetch(get('/RESUME-BUILDER-WITHOUT-EMAIL'), env);
+    expect(upper.status).toBe(301);
+  });
+
   it('保留页本身不重定向', async () => {
     const { env, calls } = makeEnv();
     const res = await worker.fetch(get('/resume-builder-no-sign-up/'), env);

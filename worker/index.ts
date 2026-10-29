@@ -31,6 +31,16 @@ const REDIRECTS: Record<string, string> = {
   '/resume-builder-without-email/': '/resume-builder-no-sign-up/',
 };
 
+/**
+ * 归一化路径以便匹配重定向表。
+ * 小写 + 去掉末尾的点（某些爬虫会请求 `/x.`）+ 补尾斜杠，
+ * 三种变体都落到同一个 key，避免漏掉 301 变成 404。
+ */
+function normalizePath(pathname: string): string {
+  const trimmed = pathname.toLowerCase().replace(/\.+$/, '');
+  return trimmed.endsWith('/') ? trimmed : `${trimmed}/`;
+}
+
 export interface Env extends AiEnv {
   ASSETS: { fetch(request: Request): Promise<Response> };
 }
@@ -40,8 +50,7 @@ export default {
     const url = new URL(request.url);
 
     // 合并后的旧地址：301 到保留页（保留查询串）
-    const normalized = url.pathname.endsWith('/') ? url.pathname : `${url.pathname}/`;
-    const target = REDIRECTS[normalized];
+    const target = REDIRECTS[normalizePath(url.pathname)];
     if (target) {
       const to = new URL(target, url);
       to.search = url.search;
