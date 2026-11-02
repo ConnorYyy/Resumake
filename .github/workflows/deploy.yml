@@ -48,3 +48,9 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # 站点更新后主动通知 Bing / Yandex / Seznam 来抓，不等它们自己排期。
+      # 只需要根目录的 <key>.txt，不依赖任何 secret；失败不影响部署结果。
+      - name: Notify IndexNow
+        continue-on-error: true
+        run: node scripts/indexnow.mjs

@@ -13,9 +13,26 @@ const ENDPOINT = '/api/event/';
 
 export type UsageEvent = 'editor_open' | 'export';
 
+/**
+ * 自动化环境识别。
+ *
+ * 站点上线后一直有云厂商的无头浏览器（Puppeteer 类）每天定时打开首页和编辑器，
+ * 它们会执行 JS，因此也会触发 editor_open —— 让「编辑器打开」这个数字失真。
+ * navigator.webdriver 是浏览器对自动化驱动的标准标记，真人浏览器不会为 true，
+ * 所以用它把这类流量排除掉（同时也排除 UA 里带 HeadlessChrome 的客户端）。
+ */
+function isAutomatedClient(): boolean {
+  if (typeof navigator === 'undefined') return false;
+  if (navigator.webdriver) return true;
+  return /HeadlessChrome|PhantomJS|Puppeteer|Playwright/i.test(navigator.userAgent);
+}
+
 export function trackUsage(event: UsageEvent): void {
   // 本地开发时没有这个接口，直接跳过，避免控制台出现无意义的 404
   if (!import.meta.env.PROD) return;
+
+  // 无头浏览器 / 自动化脚本的"使用"不是真人使用，不计入
+  if (isAutomatedClient()) return;
 
   try {
     const url = ENDPOINT + event;

@@ -153,42 +153,26 @@
           <div class="answers">
             <article class="answer">
               <h3>Is my resume uploaded to a server?</h3>
-              <p>
-                Not unless you press the optional AI improve button. Resume content, photos and settings stay in
-                your browser's local storage, there is no resume database, and the AI only receives the sentence you
-                selected — never the whole document.
-              </p>
+              <p>It stays in this browser: 1 copy in IndexedDB, no account and no server-side database. The only upload is the optional AI improve button, which sends at most 600 characters of the field you are editing.</p>
             </article>
             <article class="answer">
               <h3>What exactly is stored, and where?</h3>
-              <p>
-                Two things live in your browser profile for resumake.online: your resume content in IndexedDB, and your
-                settings such as template, language and layout. Neither is synced anywhere.
-              </p>
+              <p>It is 2 things: the resume content in IndexedDB, and the settings — template, language, layout — in the same browser profile for resumake.online.</p>
               <p>
                 If you open your browser's developer tools and clear site data, both are removed at once.
               </p>
             </article>
             <article class="answer">
               <h3>Does the PDF leave my device?</h3>
-              <p>
-                No. The PDF is produced by your browser's own print engine from the page you see, and saved straight to
-                your downloads folder. It is never uploaded for processing.
-              </p>
+              <p>It does not: 1 local print engine, 0 uploads. Your browser renders the page you see and saves the PDF straight to your downloads folder.</p>
             </article>
             <article class="answer">
               <h3>What happens if I clear my browser data?</h3>
-              <p>
-                The draft disappears, because the draft only exists in this browser. Download a backup JSON file first;
-                you can restore it in any browser later.
-              </p>
+              <p>It is gone: the draft exists only in this browser, so clearing site data deletes it. Download a backup JSON first and you can restore it in any browser later.</p>
             </article>
             <article class="answer">
               <h3>Can I open the same resume on another device?</h3>
-              <p>
-                Yes, through the backup file. There is no cloud sync because there is no account and no server-side
-                storage.
-              </p>
+              <p>It is possible with 1 file: Save backup downloads a JSON with the resume and settings, and Import restores it on another device. There is no cloud sync because there is no account.</p>
             </article>
           </div>
         </div>
@@ -201,11 +185,8 @@
           </div>
           <div class="answers">
             <article class="answer">
-              <h3>A resume is one of the most personal documents you own.</h3>
-              <p>
-                It contains your full name, phone number, email, home city, employment history, education and often a
-                photo. Uploading it to a third-party service creates a copy you no longer control.
-              </p>
+              <h3>Why does storing it locally matter?</h3>
+              <p>It is the most personal document you own — name, phone, email, city, employment history, education and often a photo. Uploading it creates 1 more copy you cannot delete.</p>
               <p>
                 Breaches happen, databases get misconfigured, and "we may share data with partners" clauses are common.
                 The simplest way to reduce that risk is to never send the file anywhere in the first place.
