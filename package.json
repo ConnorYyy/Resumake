@@ -2,6 +2,7 @@
   "name": "resumake",
   "version": "1.0.0",
   "description": "基于 HTML 模板的个人简历生成与 PDF 导出 Web 应用",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "scripts": {

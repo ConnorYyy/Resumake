@@ -152,3 +152,9 @@ HSTS **没有** 加 `preload`：它需要向浏览器厂商提交名单，且移
 - 产品需求文档（PRD）：`docs/PRD.md`
 - Buy Me a Coffee 主页文案：`docs/buymeacoffee.md`
 - 域名候选清单：`docs/domain-shortlist.md`
+
+## 许可证
+
+[MIT](LICENSE) © 2026 ConnorYyy
+
+可自由使用、修改、分发（含商用），保留版权声明与许可声明即可。仓库内的示例简历为虚构内容，不对应任何真实个人。
