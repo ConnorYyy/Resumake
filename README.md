@@ -4,9 +4,18 @@
 
 <h1 align="center">Resumake</h1>
 
-<p align="center">基于 HTML 模板的个人简历生成与 PDF 导出 Web 应用</p>
+<p align="center">
+  A resume builder that runs entirely in your browser — <strong>free</strong>, with no sign-up, no email and no upload.
+  Three templates, live A4/Letter preview, and an ATS-friendly PDF export with real selectable text.
+</p>
 
-<p align="center"><a href="https://resumake.online">https://resumake.online</a></p>
+<p align="center">
+  <a href="https://resumake.online"><strong>Free resume builder → resumake.online</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/ConnorYyy/Resumake/blob/feature/LICENSE">MIT License</a>
+</p>
+
+<p align="center">基于 HTML 模板的个人简历生成与 PDF 导出 Web 应用，支持中文界面与中文简历。</p>
 
 ---
 
