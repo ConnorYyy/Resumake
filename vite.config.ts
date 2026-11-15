@@ -27,7 +27,10 @@ const SITEMAP_PAGES = [
   { loc: '/resume-builder-no-sign-up/', priority: '0.8', localized: false, updated: '2026-10-28' },
   { loc: '/free-resume-builder-no-watermark/', priority: '0.8', localized: false, updated: '2026-10-28' },
   { loc: '/ats-friendly-resume-builder/', priority: '0.8', localized: false, updated: '2026-10-28' },
-  { loc: '/templates/', priority: '0.7', localized: false, updated: '2026-10-28' },
+  { loc: '/templates/', priority: '0.7', localized: false, updated: '2026-11-15' },
+  { loc: '/templates/classic/', priority: '0.6', localized: false, updated: '2026-11-15' },
+  { loc: '/templates/modern/', priority: '0.6', localized: false, updated: '2026-11-15' },
+  { loc: '/templates/minimal/', priority: '0.6', localized: false, updated: '2026-11-15' },
   { loc: '/zh/jianli-shengchengqi/', priority: '0.7', localized: false, updated: '2026-10-28' },
 ];
 
@@ -225,6 +228,9 @@ export default defineConfig(({ mode }) => {
           noWatermark: 'free-resume-builder-no-watermark/index.html',
           atsFriendly: 'ats-friendly-resume-builder/index.html',
           templates: 'templates/index.html',
+          templateClassic: 'templates/classic/index.html',
+          templateModern: 'templates/modern/index.html',
+          templateMinimal: 'templates/minimal/index.html',
           zhGenerator: 'zh/jianli-shengchengqi/index.html',
         },
       },
