@@ -15,6 +15,10 @@
   <a href="https://github.com/ConnorYyy/Resumake/blob/feature/LICENSE">MIT License</a>
 </p>
 
+<p align="center">
+  <a href="https://dev.to/connoryyy/how-i-built-a-resume-builder-that-never-uploads-your-cv-fp">How it was built — technical write-up on DEV</a>
+</p>
+
 <p align="center">基于 HTML 模板的个人简历生成与 PDF 导出 Web 应用，支持中文界面与中文简历。</p>
 
 ---
