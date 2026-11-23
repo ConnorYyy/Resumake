@@ -20,8 +20,8 @@ const RELEASE = `resumake@${pkg.version}`;
  * 改动某个页面的正文后，记得同步改这里的日期。
  */
 const SITEMAP_PAGES = [
-  { loc: '/', priority: '1.0', localized: true, updated: '2026-10-28' },
-  { loc: '/zh/', priority: '0.9', localized: true, updated: '2026-10-28' },
+  { loc: '/', priority: '1.0', localized: true, updated: '2026-11-23' },
+  { loc: '/zh/', priority: '0.9', localized: true, updated: '2026-11-23' },
   { loc: '/app/', priority: '0.7', localized: false, updated: '2026-10-28' },
   { loc: '/private-resume-builder/', priority: '0.8', localized: false, updated: '2026-10-28' },
   { loc: '/resume-builder-no-sign-up/', priority: '0.8', localized: false, updated: '2026-10-28' },
