@@ -36,6 +36,8 @@ const SITEMAP_PAGES = [
   { loc: '/student-resume-template/', priority: '0.6', localized: false, updated: '2026-11-22' },
   { loc: '/one-page-resume-template/', priority: '0.6', localized: false, updated: '2026-11-22' },
   { loc: '/zh/jianli-shengchengqi/', priority: '0.7', localized: false, updated: '2026-10-28' },
+  { loc: '/about/', priority: '0.4', localized: false, updated: '2026-11-24' },
+  { loc: '/privacy/', priority: '0.4', localized: false, updated: '2026-11-24' },
 ];
 
 function buildSitemap(): string {
@@ -239,6 +241,8 @@ export default defineConfig(({ mode }) => {
           sweTemplate: 'software-engineer-resume-template/index.html',
           studentTemplate: 'student-resume-template/index.html',
           onePageTemplate: 'one-page-resume-template/index.html',
+          about: 'about/index.html',
+          privacy: 'privacy/index.html',
           zhGenerator: 'zh/jianli-shengchengqi/index.html',
         },
       },

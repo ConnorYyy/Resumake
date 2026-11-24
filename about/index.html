@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Resumake — Free, Browser-Only Resume Builder</title>
+    <meta name="description" content="Who builds Resumake, why it is free, how it keeps your resume in the browser, and what it is not. Independent project, MIT licensed." />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="R4qJpITjCfoNZSlde8Nvbo_bxU8YLDkUfrFbyDbGq9Y" />
+    <link rel="canonical" href="%SITE_URL%/about/" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="/landing.css" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Resumake" />
+    <meta property="og:title" content="About Resumake" />
+    <meta property="og:description" content="Who builds Resumake, why it is free, how it keeps your resume in the browser, and what it is not. Independent project, MIT licensed." />
+    <meta property="og:url" content="%SITE_URL%/about/" />
+    <meta property="og:image" content="%SITE_URL%/og/og-home.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="About Resumake" />
+    <meta name="twitter:description" content="Who builds Resumake, why it is free, how it keeps your resume in the browser, and what it is not. Independent project, MIT licensed." />
+    <meta name="twitter:image" content="%SITE_URL%/og/og-home.jpg" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "%SITE_URL%/" },
+          { "@type": "ListItem", "position": 2, "name": "About Resumake", "item": "%SITE_URL%/about/" }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "@id": "%SITE_URL%/about/#webpage",
+        "url": "%SITE_URL%/about/",
+        "name": "About Resumake",
+        "description": "Who builds Resumake, why it is free, and how it handles your data.",
+        "inLanguage": "en",
+        "isPartOf": { "@id": "%SITE_URL%/#website" },
+        "about": { "@id": "%SITE_URL%/#organization" },
+        "datePublished": "2026-11-24",
+        "dateModified": "2026-11-24"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who owns the resume I create?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You do. Nothing is uploaded, so there is no server-side copy and no licence over your content. You can export the PDF or a JSON backup at any time."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Resumake affiliated with resumake.io?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Resumake.online is an independent project with a similar name. It is not affiliated with, endorsed by or connected to resumake.io."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I self-host it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The repository is MIT licensed and includes the build and deploy configuration. A fork can run without the AI feature, because the button is hidden when no API key is configured."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I report a bug or request a feature?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open an issue on the GitHub repository. There is no email support address, which is a consequence of not collecting email addresses anywhere on the site."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/">
+          <img src="/logo.svg" alt="Resumake logo" width="24" height="24" />
+          <span>Resumake</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a class="hide-sm" href="/#features">Features</a>
+          <a class="hide-sm" href="/templates/">Templates</a>
+          <a class="hide-sm" href="#faq">FAQ</a>
+          <a class="hide-sm" href="/zh/">中文</a>
+          <a class="btn small" href="/app/">Open editor</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1>About Resumake</h1>
+          <p class="lead">An independent, free resume builder that runs entirely in your browser. No account, no email, no upload — and no company behind it.</p>
+        </div>
+      </section>
+
+      <section class="block" id="why">
+        <div class="container">
+          <div class="section-head">
+            <h2>Why it exists</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p>Every free resume builder I tried while job hunting had the same two walls: create an account, then pay to download the PDF you had just made. The document also left your machine — your name, phone number, employer history and sometimes a photo — into a database you could not see or delete.</p>
+              <p>Resumake is the version of that tool I wanted: open it, type, export. The PDF is produced by your browser, so there is no server-side copy to lose, leak or sell.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="how">
+        <div class="container">
+          <div class="section-head">
+            <h2>How it works</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p>The landing pages are static HTML. The editor is a Vue 3 application that renders your resume into an iframe, and the PDF comes from your browser's own print engine — which is why the exported file contains real selectable text rather than an image.</p>
+              <p>Drafts are saved in IndexedDB inside your browser. There is no account and no server database; moving a resume between devices means downloading a JSON backup and importing it.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="who">
+        <div class="container">
+          <div class="section-head">
+            <h2>Who is behind it</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p>One independent developer, working in the open. There is no company, no team, no investors and no advertising network — the code is published under the MIT license at <a href="https://github.com/ConnorYyy/Resumake" rel="noopener">github.com/ConnorYyy/Resumake</a>, including the deployment workflow and the SEO checks.</p>
+              <p>Bugs and feature requests go through the <a href="https://github.com/ConnorYyy/Resumake/issues" rel="noopener">GitHub issue tracker</a>. There is no support queue, which is also why there is no account system.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="free">
+        <div class="container">
+          <div class="section-head">
+            <h2>Why it is free</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p>The site is static files on Cloudflare Workers, so hosting costs are low and predictable. There is no resume database, no per-user storage and no sales team.</p>
+              <p>An optional Buy Me a Coffee link in the footer covers the rest. It unlocks nothing — every template, every export and every feature is available without paying, and there is no paid tier to upgrade to.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="not">
+        <div class="container">
+          <div class="section-head">
+            <h2>What it is not</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p>It is not affiliated with <strong>resumake.io</strong> or any other similarly named service. The names are similar; the projects are not connected.</p>
+              <p>It is not a job board and not a CV-writing service. The optional AI button rewrites a single field you have already written; it does not invent experience on your behalf.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="data">
+        <div class="container">
+          <div class="section-head">
+            <h2>How your data is handled</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p>Your resume stays in your browser. The site records anonymous counters (pages opened, PDFs exported) and crash reports, and the optional AI button sends only the field you are editing, capped at 600 characters.</p>
+              <p>The details, including the third parties involved, are listed in the <a href="/privacy/">privacy policy</a>. If you want the technical version of where the draft lives, read <a href="/private-resume-builder/">how private mode works</a>.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block alt" id="faq">
+        <div class="container">
+          <div class="section-head">
+            <h2>Frequently asked questions</h2>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>Who owns the resume I create?</summary>
+              <p>You do. Nothing is uploaded, so there is no server-side copy and no licence over your content. You can export the PDF or a JSON backup at any time.</p>
+            </details>
+            <details>
+              <summary>Is Resumake affiliated with resumake.io?</summary>
+              <p>No. Resumake.online is an independent project with a similar name. It is not affiliated with, endorsed by or connected to resumake.io.</p>
+            </details>
+            <details>
+              <summary>Can I self-host it?</summary>
+              <p>Yes. The repository is MIT licensed and includes the build and deploy configuration. A fork can run without the AI feature, because the button is hidden when no API key is configured.</p>
+            </details>
+            <details>
+              <summary>How do I report a bug or request a feature?</summary>
+              <p>Open an issue on the GitHub repository. There is no email support address, which is a consequence of not collecting email addresses anywhere on the site.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="container">
+          <h2>Build a resume without an account.</h2>
+          <p>Free, no upload, no watermark — export a PDF with real text in a few minutes.</p>
+          <a class="btn" href="/app/">Open the editor</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>© Resumake. Independent project, not affiliated with resumake.io.</span>
+        <span>
+          <a href="/about/">About</a> ·
+          <a href="/privacy/">Privacy</a> ·
+          <a href="/private-resume-builder/">Private mode</a> ·
+          <a href="/resume-builder-no-sign-up/">No sign-up</a> ·
+          <a href="/free-resume-builder-no-watermark/">No watermark</a> ·
+          <a href="/ats-friendly-resume-builder/">ATS</a>
+        </span>
+        <span><a href="/app/">Editor</a> · <a href="/zh/">中文版</a> · <a href="https://github.com/ConnorYyy/Resumake" rel="noopener">GitHub</a></span>
+      </div>
+    </footer>
+    <script type="module" src="/src/landing.ts"></script>
+    <script
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "36068ede1e0d43b0a4387d88b2398299"}'
+    ></script>
+  </body>
+</html>

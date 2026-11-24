@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — Resumake</title>
+    <meta name="description" content="Exactly what Resumake stores, what it never sends, and which third parties are involved: analytics, crash reports and the optional AI button." />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-site-verification" content="R4qJpITjCfoNZSlde8Nvbo_bxU8YLDkUfrFbyDbGq9Y" />
+    <link rel="canonical" href="%SITE_URL%/privacy/" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="/landing.css" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Resumake" />
+    <meta property="og:title" content="Privacy policy" />
+    <meta property="og:description" content="Exactly what Resumake stores, what it never sends, and which third parties are involved: analytics, crash reports and the optional AI button." />
+    <meta property="og:url" content="%SITE_URL%/privacy/" />
+    <meta property="og:image" content="%SITE_URL%/og/og-home.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Privacy policy" />
+    <meta name="twitter:description" content="Exactly what Resumake stores, what it never sends, and which third parties are involved: analytics, crash reports and the optional AI button." />
+    <meta name="twitter:image" content="%SITE_URL%/og/og-home.jpg" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "%SITE_URL%/" },
+          { "@type": "ListItem", "position": 2, "name": "Privacy policy", "item": "%SITE_URL%/privacy/" }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "%SITE_URL%/privacy/#webpage",
+        "url": "%SITE_URL%/privacy/",
+        "name": "Privacy policy",
+        "description": "What Resumake stores, what it never sends, and which third parties are involved.",
+        "inLanguage": "en",
+        "isPartOf": { "@id": "%SITE_URL%/#website" },
+        "about": { "@id": "%SITE_URL%/#organization" },
+        "datePublished": "2026-11-24",
+        "dateModified": "2026-11-24"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does Resumake use cookies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No tracking cookies. The draft is stored in IndexedDB, not in a cookie, and the analytics service is cookieless. That is why there is no cookie banner."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my resume sent to an AI model automatically?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Text is sent only when you press the AI button, and only the field you are editing, capped at 600 characters. Nothing else from the resume is included."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you sell or share my data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. There is no advertising network, no data broker and no analytics vendor beyond the cookieless page-view counter described above."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I delete everything?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Clear site data for resumake.online in your browser. That removes the IndexedDB draft and any local settings; there is no server-side copy to delete."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/">
+          <img src="/logo.svg" alt="Resumake logo" width="24" height="24" />
+          <span>Resumake</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a class="hide-sm" href="/#features">Features</a>
+          <a class="hide-sm" href="/templates/">Templates</a>
+          <a class="hide-sm" href="#faq">FAQ</a>
+          <a class="hide-sm" href="/zh/">中文</a>
+          <a class="btn small" href="/app/">Open editor</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1>Privacy policy</h1>
+          <p class="lead">Short version: your resume stays in your browser. This page lists every piece of data the site does touch, in plain language — including the parts that leave your device.</p>
+        </div>
+      </section>
+
+      <section class="block" id="resume">
+        <div class="container">
+          <div class="section-head">
+            <h2>Your resume</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p>Resume content, photos and settings are stored in your browser only — in IndexedDB, under this site's origin. There is no server-side resume database, no account and no upload endpoint, so there is no copy of your CV outside your device.</p>
+              <p>Clearing site data removes the draft. To keep it, use <em>Save backup</em> in the editor, which downloads a JSON file you control; <em>Import</em> restores it on another device.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="ai">
+        <div class="container">
+          <div class="section-head">
+            <h2>The optional AI rewrite button</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p>If you press the AI button, the text of the field you are editing is sent to an AI model through a Cloudflare Worker, together with the interface language and the field name. The request is capped at 600 characters. Your photo, contact details, other sections and the rest of the document are never included.</p>
+              <p>The response is returned to your browser and not stored. Requests are rate limited per IP address per minute (the counter is discarded), and the API key lives only in the server-side Worker secret. If you never press the button, nothing is sent.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="analytics">
+        <div class="container">
+          <div class="section-head">
+            <h2>Analytics</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p>Page views are counted with Cloudflare Web Analytics, which sets no cookies and does not fingerprint visitors. In addition, the site records two anonymous counters — the editor was opened, a PDF was exported — by calling its own Worker; only the event name is recorded, never resume content.</p>
+              <p>There is no Google Analytics, no advertising pixel, no cross-site tracking and no user identifier. That is also why you do not see a cookie banner: there are no tracking cookies to consent to.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="errors">
+        <div class="container">
+          <div class="section-head">
+            <h2>Crash reports</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p>The editor page loads Sentry to report JavaScript errors. A report contains the error type, a stack trace, the page URL with query strings removed, and browser/version information. It never contains resume content, photos or form field values.</p>
+              <p>Crash reports are used only to find and fix bugs. The landing pages do not load this library at all.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="third-parties">
+        <div class="container">
+          <div class="section-head">
+            <h2>Third parties</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p><strong>Cloudflare</strong> hosts the site and provides the cookieless page-view analytics. <strong>Sentry</strong> receives the crash reports described above. When you press the AI button, the selected text is processed by the AI provider behind the Worker.</p>
+              <p>No other third party receives data from this site. There are no ad networks, no data brokers and no marketing tools.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="never">
+        <div class="container">
+          <div class="section-head">
+            <h2>What the site never does</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p>It does not ask for an account, an email address or a password. It does not sell or share personal data. It does not build a profile of you across visits or sites, and it does not put your resume into a training dataset — the AI request is a single field you chose to send.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="controls">
+        <div class="container">
+          <div class="section-head">
+            <h2>Your controls</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p>Clear this site's data in your browser to delete the local draft. Skip the AI button to keep everything on your device. Block the analytics script with any content blocker — the site keeps working, because nothing depends on it.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="changes">
+        <div class="container">
+          <div class="section-head">
+            <h2>Changes and contact</h2>
+          </div>
+          <div class="answers">
+            <article class="answer">
+              <p>This policy is dated 24 November 2026. If the data handling changes — for example a new third party — this page will be updated before the change ships, and the date above will move.</p>
+              <p>Questions or corrections: open an issue at <a href="https://github.com/ConnorYyy/Resumake/issues" rel="noopener">github.com/ConnorYyy/Resumake</a>.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="block alt" id="faq">
+        <div class="container">
+          <div class="section-head">
+            <h2>Frequently asked questions</h2>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>Does Resumake use cookies?</summary>
+              <p>No tracking cookies. The draft is stored in IndexedDB, not in a cookie, and the analytics service is cookieless. That is why there is no cookie banner.</p>
+            </details>
+            <details>
+              <summary>Is my resume sent to an AI model automatically?</summary>
+              <p>No. Text is sent only when you press the AI button, and only the field you are editing, capped at 600 characters. Nothing else from the resume is included.</p>
+            </details>
+            <details>
+              <summary>Do you sell or share my data?</summary>
+              <p>No. There is no advertising network, no data broker and no analytics vendor beyond the cookieless page-view counter described above.</p>
+            </details>
+            <details>
+              <summary>How do I delete everything?</summary>
+              <p>Clear site data for resumake.online in your browser. That removes the IndexedDB draft and any local settings; there is no server-side copy to delete.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="container">
+          <h2>Build a resume without an account.</h2>
+          <p>Free, no upload, no watermark — export a PDF with real text in a few minutes.</p>
+          <a class="btn" href="/app/">Open the editor</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>© Resumake. Independent project, not affiliated with resumake.io.</span>
+        <span>
+          <a href="/about/">About</a> ·
+          <a href="/privacy/">Privacy</a> ·
+          <a href="/private-resume-builder/">Private mode</a> ·
+          <a href="/resume-builder-no-sign-up/">No sign-up</a> ·
+          <a href="/free-resume-builder-no-watermark/">No watermark</a> ·
+          <a href="/ats-friendly-resume-builder/">ATS</a>
+        </span>
+        <span><a href="/app/">Editor</a> · <a href="/zh/">中文版</a> · <a href="https://github.com/ConnorYyy/Resumake" rel="noopener">GitHub</a></span>
+      </div>
+    </footer>
+    <script type="module" src="/src/landing.ts"></script>
+    <script
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "36068ede1e0d43b0a4387d88b2398299"}'
+    ></script>
+  </body>
+</html>
