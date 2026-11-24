@@ -1,11 +1,12 @@
-import { initTelemetry } from './services/telemetry';
 import { SUPPORT_URL } from './config/support';
 
 /**
- * 落地页入口：崩溃上报、编辑器链接语言标记、页脚赞助入口。
- * 落地页没有 Vue 实例，因此不传 app；隐私配置与编辑器完全一致（见 services/telemetry.ts）。
+ * 落地页入口：编辑器链接语言标记 + 页脚赞助入口。
+ *
+ * 故意**不**引入崩溃上报：Sentry SDK 约 39KB gzip，而落地页只做两个 DOM 操作，
+ * 把 SDK 打进落地页会让首屏 JS 从约 2KB 涨到 42KB（实测），收益与成本完全不匹配。
+ * 编辑器页面（src/main.ts）仍然同步初始化 telemetry，错误上报覆盖真正有交互的页面。
  */
-initTelemetry();
 
 /** 当前落地页的语言（由各页面的 <html lang> 决定） */
 function pageLocale(): 'en' | 'zh' {

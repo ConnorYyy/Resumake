@@ -12,6 +12,8 @@
     <meta name="google-site-verification" content="R4qJpITjCfoNZSlde8Nvbo_bxU8YLDkUfrFbyDbGq9Y" />
     <link rel="canonical" href="%SITE_URL%/app/" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#ffffff" />
 
     <meta property="og:site_name" content="Resumake" />
     <meta property="og:type" content="website" />
@@ -22,7 +24,7 @@
     />
     <meta property="og:url" content="%SITE_URL%/app/" />
     <meta property="og:image" content="%SITE_URL%/og/og-app.jpg" />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -102,6 +104,47 @@
       #app > ul a {
         color: #1d1d1f;
       }
+
+      /* 编辑器下方的静态说明区（#app 之外，水合后仍保留） */
+      .app-about {
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        background: #ffffff;
+        padding: 40px 24px 56px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      }
+      .app-about-inner {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      .app-about h2 {
+        margin: 26px 0 8px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #1d1d1f;
+      }
+      .app-about h2:first-child {
+        margin-top: 0;
+      }
+      .app-about p {
+        margin: 0 0 10px;
+        font-size: 13.5px;
+        line-height: 1.65;
+        color: #424245;
+      }
+      .app-about-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 22px;
+        margin: 22px 0 0;
+        padding: 0;
+        list-style: none;
+        font-size: 13.5px;
+      }
+      .app-about-links a {
+        color: #1d1d1f;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      }
     </style>
     <div id="app">
       <h1>Free resume editor — no sign-up, no paywall</h1>
@@ -128,6 +171,42 @@
         <li><a href="https://github.com/ConnorYyy/Resumake" rel="noopener">Source code on GitHub</a></li>
       </ul>
     </div>
+
+    <!--
+      编辑器挂载后会替换 #app 的内容，所以这段说明放在 #app 之外：
+      渲染后的 DOM 里依然存在，Google/Bing 能看到，第一次来的访客向下滚动也能看到。
+    -->
+    <footer class="app-about">
+      <div class="app-about-inner">
+        <h2>What this editor does</h2>
+        <p>
+          A free resume editor that runs entirely in the browser. Pick one of three templates, fill in your details, and
+          export an A4 or Letter PDF with a real text layer — the kind applicant tracking systems can actually read.
+          There is no account, no email address and no paywall.
+        </p>
+        <h2>Where your resume is stored</h2>
+        <p>
+          Drafts are saved in this browser only, in IndexedDB, and the server keeps no copy — so there is no resume
+          database to leak. To move a resume to another device, download the JSON backup and import it there. The
+          optional AI improve button is the single exception: it sends at most 600 characters of the field you are
+          editing, and the result is not stored.
+        </p>
+        <h2>Exporting the PDF</h2>
+        <p>
+          Export opens your browser's print dialog. Keep the paper size and margins on default, turn off “Headers and
+          footers”, and choose “Save as PDF”. The file keeps selectable text and clickable links, and nothing is
+          watermarked.
+        </p>
+        <ul class="app-about-links">
+          <li><a href="/templates/">Resume templates compared</a></li>
+          <li><a href="/ats-friendly-resume-builder/">What makes a PDF ATS-friendly</a></li>
+          <li><a href="/private-resume-builder/">Where your data is stored</a></li>
+          <li><a href="/resume-builder-no-sign-up/">Why there is no account or email</a></li>
+          <li><a href="/one-page-resume-template/">Fitting a resume on one page</a></li>
+          <li><a href="/free-resume-builder-no-watermark/">Free, with no watermark</a></li>
+        </ul>
+      </div>
+    </footer>
     <script type="module" src="/src/main.ts"></script>
 
     <!-- Cloudflare Web Analytics：无 Cookie、不跨站追踪、不采集个人信息。

@@ -84,7 +84,32 @@ const pages = walk(root).map((file) => {
     return { q, a };
   });
 
-  return { file, normalizedPath, title, desc, canonical, h1s, imgsNoAlt, hrefs, ldBlocks, types, faqSchema, faqVisible, ldErrors };
+  // Open Graph / Twitter 元数据
+  const og = {};
+  for (const t of html.match(/<meta\b[^>]*>/gi) || []) {
+    const prop = (attr(t, 'property') || '').toLowerCase();
+    const name = (attr(t, 'name') || '').toLowerCase();
+    if (prop.startsWith('og:')) og[prop] = attr(t, 'content') || '';
+    if (name === 'twitter:card') og['twitter:card'] = attr(t, 'content') || '';
+  }
+
+  return {
+    file,
+    normalizedPath,
+    title,
+    desc,
+    canonical,
+    h1s,
+    imgsNoAlt,
+    hrefs,
+    ldBlocks,
+    types,
+    faqSchema,
+    faqVisible,
+    ldErrors,
+    og,
+    html,
+  };
 });
 
 const problems = [];
@@ -101,6 +126,27 @@ for (const p of pages) {
   if (p.canonical && !/^https?:\/\//.test(p.canonical)) problems.push(`${label} canonical 不是绝对地址`);
   if (p.imgsNoAlt) problems.push(`${label} ${p.imgsNoAlt} 张图片缺 alt`);
   if (p.ldErrors) problems.push(`${label} ${p.ldErrors} 个 JSON-LD 语法错误`);
+
+  // 占位符泄漏（新 HTML 未走 Vite 入口时会出现）
+  if (p.html.includes('%SITE_URL%') || p.html.includes('%BUILD_DATE%')) {
+    problems.push(`${label} 存在未替换的占位符`);
+  }
+
+  // 社交卡片元数据
+  if (p.normalizedPath !== '/404.html') {
+    for (const key of ['og:title', 'og:description', 'og:image', 'twitter:card']) {
+      if (!p.og[key]) problems.push(`${label} 缺少 ${key}`);
+    }
+    const ogType = p.og['og:image:type'];
+    const ogImage = p.og['og:image'];
+    if (ogType && ogImage) {
+      const ext = ogImage.split('?')[0].split('.').pop().toLowerCase();
+      const expected = ext === 'jpg' || ext === 'jpeg' ? 'image/jpeg' : ext === 'png' ? 'image/png' : ext === 'webp' ? 'image/webp' : null;
+      if (expected && ogType !== expected) {
+        problems.push(`${label} og:image:type=${ogType} 但文件是 .${ext}`);
+      }
+    }
+  }
 
   if (p.faqSchema) {
     const byQ = new Map(p.faqVisible.map((v) => [v.q, v.a]));
